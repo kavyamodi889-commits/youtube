@@ -1,0 +1,206 @@
+/* studio/src/pages/StudioLogin/StudioLogin.css */
+
+.sl-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--st-bg);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient background blobs */
+.sl-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 45% at 15% 30%, rgba(181,41,78,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 55% at 85% 70%, rgba(102,84,168,0.10) 0%, transparent 70%);
+}
+
+/* Card */
+.sl-card {
+  position: relative;
+  width: 100%; max-width: 400px;
+  background: var(--st-surf1);
+  border: 1px solid var(--st-border2);
+  border-radius: 16px;
+  padding: 36px 32px 28px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Logo */
+.sl-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.sl-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.sl-logo-aura {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #b5294e, #6654a8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+}
+.sl-logo-studio {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--st-t3);
+  letter-spacing: 0.5px;
+}
+
+/* Heading */
+.sl-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--st-t1);
+  margin-bottom: 6px;
+}
+.sl-sub {
+  font-size: 12px;
+  color: var(--st-t3);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.sl-sub-link {
+  color: var(--st-rose);
+  text-decoration: none;
+  font-weight: 600;
+}
+.sl-sub-link:hover { text-decoration: underline; }
+
+/* Error */
+.sl-error {
+  background: var(--st-red-bg);
+  border: 1px solid var(--st-red);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 13px;
+  color: var(--st-red);
+  margin-bottom: 14px;
+}
+
+/* Form */
+.sl-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.sl-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.sl-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--st-t2);
+  font-family: 'Space Grotesk', sans-serif;
+}
+.sl-input {
+  width: 100%;
+  background: var(--st-surf2);
+  border: 1px solid var(--st-border2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--st-t1);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+.sl-input:focus { border-color: var(--st-rose); }
+.sl-input::placeholder { color: var(--st-t4); }
+
+.sl-pw-wrap { position: relative; }
+.sl-pw-wrap .sl-input { padding-right: 40px; }
+.sl-pw-toggle {
+  position: absolute;
+  right: 10px; top: 50%;
+  transform: translateY(-50%);
+  background: none; border: none;
+  color: var(--st-t3); cursor: pointer;
+  display: flex; align-items: center;
+  transition: color 0.15s;
+}
+.sl-pw-toggle:hover { color: var(--st-t1); }
+
+/* Primary button */
+.sl-btn-primary {
+  width: 100%;
+  padding: 11px;
+  border-radius: 8px;
+  background: var(--st-rose);
+  border: none;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(181,41,78,0.3);
+  transition: opacity 0.15s, box-shadow 0.15s;
+}
+.sl-btn-primary:hover    { opacity: 0.88; box-shadow: 0 6px 22px rgba(181,41,78,0.45); }
+.sl-btn-primary:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* Divider */
+.sl-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0 14px;
+  font-size: 12px;
+  color: var(--st-t4);
+}
+.sl-divider::before,
+.sl-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--st-border);
+}
+
+/* Google button */
+.sl-btn-google {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--st-surf2);
+  border: 1px solid var(--st-border2);
+  color: var(--st-t1);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-bottom: 18px;
+}
+.sl-btn-google:hover { background: var(--st-surf3); }
+
+/* Footer */
+.sl-footer {
+  font-size: 12px;
+  color: var(--st-t3);
+  text-align: center;
+}

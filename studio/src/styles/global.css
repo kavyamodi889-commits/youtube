@@ -1,0 +1,143 @@
+/* studio/src/styles/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ═══════════════════════════════════════════════
+   THEME TOKENS
+   Toggle by setting data-theme="light" on <html>
+   Default is dark — matches main AURA app
+═══════════════════════════════════════════════ */
+
+:root,
+[data-theme="dark"] {
+  --st-bg:      #07070f;
+  --st-surf1:   #0d0d18;
+  --st-surf2:   #111120;
+  --st-surf3:   #161628;
+  --st-surf4:   #1e1e32;
+  --st-surf5:   #252540;
+
+  --st-border:  rgba(255,255,255,0.07);
+  --st-border2: rgba(255,255,255,0.12);
+  --st-border3: rgba(255,255,255,0.20);
+
+  --st-t1:  #f0f0f8;
+  --st-t2:  rgba(240,240,248,0.68);
+  --st-t3:  rgba(240,240,248,0.40);
+  --st-t4:  rgba(240,240,248,0.20);
+
+  /* AURA brand */
+  --st-rose:         #b5294e;
+  --st-rose-hover:   #d63b65;
+  --st-rose-bg:      rgba(181,41,78,0.10);
+  --st-rose-border:  rgba(181,41,78,0.28);
+  --st-indigo:       #6654a8;
+  --st-indigo-hover: #7c6bbf;
+  --st-indigo-bg:    rgba(102,84,168,0.10);
+  --st-gold:         #c8922a;
+  --st-teal:         #2d9e8c;
+  --st-green:        #22c55e;
+  --st-green-bg:     rgba(34,197,94,0.10);
+  --st-red:          #ef4444;
+  --st-red-bg:       rgba(239,68,68,0.10);
+  --st-yellow:       #f59e0b;
+  --st-yellow-bg:    rgba(245,158,11,0.10);
+
+  --st-glass-bg:     rgba(13,13,24,0.82);
+  --st-scroll-thumb: rgba(255,255,255,0.09);
+
+  /* Active sidebar item — studio uses teal, not rose */
+  --st-active-bg:    rgba(14,165,160,0.10);
+  --st-active-bar:   #0ea5a0;
+}
+
+[data-theme="light"] {
+  --st-bg:      #f2f2f8;
+  --st-surf1:   #ffffff;
+  --st-surf2:   #f0f0f6;
+  --st-surf3:   #e6e6f0;
+  --st-surf4:   #dcdcec;
+  --st-surf5:   #d2d2e0;
+
+  --st-border:  rgba(0,0,0,0.07);
+  --st-border2: rgba(0,0,0,0.12);
+  --st-border3: rgba(0,0,0,0.20);
+
+  --st-t1:  #0a0a14;
+  --st-t2:  rgba(10,10,20,0.65);
+  --st-t3:  rgba(10,10,20,0.42);
+  --st-t4:  rgba(10,10,20,0.22);
+
+  --st-rose-bg:     rgba(181,41,78,0.07);
+  --st-rose-border: rgba(181,41,78,0.22);
+  --st-indigo-bg:   rgba(102,84,168,0.07);
+  --st-green-bg:    rgba(34,197,94,0.08);
+  --st-red-bg:      rgba(239,68,68,0.08);
+  --st-yellow-bg:   rgba(245,158,11,0.08);
+
+  --st-glass-bg:     rgba(255,255,255,0.88);
+  --st-scroll-thumb: rgba(0,0,0,0.10);
+
+  --st-active-bg:  rgba(14,165,160,0.08);
+  --st-active-bar: #0ea5a0;
+}
+
+/* ═══ GLOBALS ═══ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body, #root {
+  min-height: 100vh;
+  background: var(--st-bg);
+  color: var(--st-t1);
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.25s, color 0.25s;
+}
+
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+input, textarea, select { font-family: inherit; outline: none; }
+
+/* Scrollbar */
+* { scrollbar-width: thin; scrollbar-color: var(--st-scroll-thumb) transparent; }
+*::-webkit-scrollbar { width: 4px; }
+*::-webkit-scrollbar-thumb { background: var(--st-scroll-thumb); border-radius: 4px; }
+
+/* Layout */
+.st-layout { display: flex; flex-direction: column; min-height: 100vh; }
+.st-body { display: flex; flex: 1; padding-top: var(--st-nav-h); }
+.st-main {
+  flex: 1;
+  margin-left: var(--st-sidebar-w);
+  min-height: calc(100vh - var(--st-nav-h));
+  background: var(--st-bg);
+  transition: background 0.25s;
+}
+.st-page { padding: 28px 32px 72px; max-width: 1400px; }
+
+/* Nav dimensions */
+:root {
+  --st-nav-h:     58px;
+  --st-sidebar-w: 248px;
+  --st-font-display: 'Syne', sans-serif;
+  --st-font-body:    'DM Sans', sans-serif;
+  --st-font-mono:    'JetBrains Mono', monospace;
+
+  /* ── Studio signature palette: Teal + Amber ──
+     Different from main AURA (rose/indigo).
+     Used across nav, sidebar, badges, active states. */
+  --sn-teal:         #0ea5a0;
+  --sn-teal-hover:   #14b8b3;
+  --sn-teal-bg:      rgba(14,165,160,0.10);
+  --sn-teal-border:  rgba(14,165,160,0.28);
+  --sn-teal-glow:    rgba(14,165,160,0.20);
+
+  --sn-amber:        #d97706;
+  --sn-amber-hover:  #f59e0b;
+  --sn-amber-bg:     rgba(217,119,6,0.10);
+  --sn-amber-border: rgba(217,119,6,0.28);
+}

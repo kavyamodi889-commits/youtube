@@ -1,0 +1,355 @@
+/* FILE: client/src/pages/FocusMode/FocusWall.css */
+
+.focus-wall {
+  position: fixed; inset: 0; z-index: 1000;
+  background: var(--base);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: space-between;
+  padding: 24px 32px 40px;
+  overflow: hidden;
+}
+
+.focus-wall-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(102,84,168,0.10) 0%, transparent 70%);
+}
+
+/* Top bar */
+.focus-wall-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; z-index: 1;
+}
+.focus-wall-brand {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 1.1rem; color: var(--t1);
+}
+.focus-wall-goal {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 0.875rem; color: var(--t3); max-width: 360px;
+  text-align: center; overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap;
+}
+.focus-wall-blocked { font-size: 12px; color: var(--t3); }
+
+/* Back to AURA button in topbar */
+.focus-wall-back-btn {
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--gbd);
+  background: rgba(255,255,255,0.05);
+  color: var(--t3);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+.focus-wall-back-btn:hover {
+  background: rgba(255,255,255,0.10);
+  color: var(--t1);
+  border-color: rgba(255,255,255,0.2);
+}
+body.light .focus-wall-back-btn {
+  background: rgba(0,0,0,0.04);
+  color: #6e6c88;
+  border-color: rgba(0,0,0,0.12);
+}
+body.light .focus-wall-back-btn:hover {
+  background: rgba(0,0,0,0.08);
+  color: #14122a;
+}
+
+/* Main area */
+.focus-wall-main {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 32px; z-index: 1; flex: 1; justify-content: center;
+}
+
+/* Ring wrapper */
+.focus-ring-wrap {
+  position: relative;
+  width: 280px; height: 280px;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.focus-ring-svg {
+  position: absolute;
+  top: 0; left: 0;
+  background: transparent;
+  overflow: visible;
+}
+
+.focus-ring-center {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  text-align: center;
+}
+.focus-ring-time {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.6rem; color: var(--t1); line-height: 1;
+  letter-spacing: 2px;
+}
+.focus-ring-label {
+  font-family: 'DM Sans', sans-serif; font-size: 11px;
+  color: var(--t3); text-transform: uppercase; letter-spacing: 1.5px;
+}
+.focus-ring-pct {
+  font-family: 'Space Grotesk', sans-serif; font-size: 14px;
+  font-weight: 700; color: var(--b); margin-top: 4px;
+}
+
+/* Light mode ring text */
+body.light .focus-ring-time  { color: #14122a; }
+body.light .focus-ring-label { color: #8e8baa; }
+
+/* Quote */
+.focus-wall-quote {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 1.1rem; color: var(--t2); text-align: center;
+  max-width: 480px; line-height: 1.7; margin: 0;
+}
+body.light .focus-wall-quote { color: #4e4c68; }
+
+/* Controls — only Emergency Exit button shown */
+.focus-wall-controls {
+  display: flex; gap: 12px; z-index: 1;
+}
+
+.focus-emergency-btn {
+  padding: 11px 28px; border-radius: 99px;
+  background: rgba(166,60,60,0.1); border: 1px solid rgba(166,60,60,0.3);
+  color: var(--err); font-family: 'DM Sans', sans-serif;
+  font-size: 14px; cursor: pointer; transition: all 0.15s;
+}
+.focus-emergency-btn:hover {
+  background: rgba(166,60,60,0.2); border-color: var(--err);
+}
+
+/* Milestone toast */
+.focus-milestone {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--s1);
+  border: 1px solid var(--gbd);
+  border-radius: 99px;
+  padding: 12px 28px;
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 15px; color: var(--t1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  white-space: nowrap;
+  z-index: 10;
+  text-align: center;
+}
+body.light .focus-milestone {
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  color: #14122a;
+}
+
+/* ── Emergency exit modal — fully theme-aware ── */
+.focus-emergency-backdrop {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.65); backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center; padding: 24px;
+}
+.focus-emergency-modal {
+  background: var(--s1);
+  border: 1px solid rgba(166,60,60,0.35);
+  border-radius: 20px; padding: 28px; width: 100%; max-width: 460px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.45), 0 0 0 1px var(--gbd);
+}
+body.light .focus-emergency-modal {
+  background: #ffffff;
+  border-color: rgba(166,60,60,0.22);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06);
+}
+
+.focus-emergency-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+}
+.focus-emergency-icon { font-size: 1.5rem; }
+.focus-emergency-header h3 {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 1rem; color: var(--err); margin: 0;
+}
+
+.focus-emergency-body { display: flex; flex-direction: column; gap: 14px; }
+
+.focus-emergency-instruction {
+  font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--t2); margin: 0;
+}
+body.light .focus-emergency-instruction { color: #4e4c68; }
+
+.focus-emergency-phrase-target {
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  color: var(--t1); background: var(--s2); border-radius: 8px;
+  padding: 10px 14px; line-height: 1.6; margin: 0; border-left: 3px solid var(--err);
+}
+body.light .focus-emergency-phrase-target {
+  background: #f3f2f8; color: #14122a;
+}
+
+.focus-emergency-input {
+  width: 100%; background: var(--s2); border: 1px solid rgba(166,60,60,0.3);
+  border-radius: 10px; padding: 10px 14px; color: var(--t1);
+  font-family: 'DM Sans', sans-serif; font-size: 14px;
+  outline: none; box-sizing: border-box;
+}
+body.light .focus-emergency-input {
+  background: #f3f2f8; color: #14122a; border-color: rgba(166,60,60,0.22);
+}
+.focus-emergency-input:focus { border-color: var(--err); }
+.focus-emergency-input::placeholder { color: var(--t3); }
+body.light .focus-emergency-input::placeholder { color: #9998b0; }
+
+.focus-emergency-btns { display: flex; gap: 10px; justify-content: space-between; }
+
+.focus-emergency-cancel {
+  padding: 9px 18px; border-radius: 99px;
+  background: var(--s2); border: 1px solid var(--gbd);
+  color: var(--t3); font-family: 'DM Sans', sans-serif;
+  font-size: 13px; cursor: pointer; transition: all 0.15s;
+}
+body.light .focus-emergency-cancel {
+  background: #f3f2f8; border-color: rgba(0,0,0,0.1); color: #6e6c88;
+}
+.focus-emergency-cancel:hover { background: var(--s3); color: var(--t1); }
+body.light .focus-emergency-cancel:hover { background: #e8e7f0; color: #14122a; }
+
+.focus-emergency-next {
+  padding: 9px 22px; border-radius: 99px;
+  background: var(--err); border: none; color: #fff;
+  font-family: 'Outfit', sans-serif; font-weight: 700;
+  font-size: 13px; cursor: pointer; transition: opacity 0.15s;
+}
+
+.focus-reason-list { display: flex; flex-direction: column; gap: 8px; }
+.focus-reason-btn {
+  padding: 11px 16px; border-radius: 10px;
+  background: var(--s2); border: 1px solid var(--gbd);
+  color: var(--t2); font-family: 'DM Sans', sans-serif;
+  font-size: 13px; text-align: left; cursor: pointer; transition: all 0.15s;
+}
+body.light .focus-reason-btn {
+  background: #f3f2f8; border-color: rgba(0,0,0,0.08); color: #4e4c68;
+}
+.focus-reason-btn:hover { background: var(--s3); color: var(--t1); }
+body.light .focus-reason-btn:hover { background: #e8e7f0; color: #14122a; }
+.focus-reason-btn.selected {
+  background: rgba(166,60,60,0.1); border-color: var(--err); color: var(--err);
+}
+
+.focus-countdown-num {
+  font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--err);
+}
+.focus-countdown-bar {
+  height: 6px; background: var(--s3); border-radius: 3px; overflow: hidden;
+}
+body.light .focus-countdown-bar { background: #e8e7f0; }
+.focus-countdown-fill {
+  height: 100%; background: var(--err);
+  transition: width 1s linear; border-radius: 3px;
+}
+/* ── Focus Reward Modal ─────────────────────────────────────────── */
+.focus-reward-backdrop {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.82);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+}
+.focus-reward-modal {
+  position: relative; width: 100%; max-width: 440px;
+  background: var(--s1); border-radius: 20px;
+  padding: 36px 32px 28px; text-align: center;
+  border: 1px solid var(--s3);
+  overflow: hidden;
+}
+.reward-premium { border-color: rgba(99,102,241,0.4); }
+.reward-ultra   { border-color: rgba(245,158,11,0.4); }
+
+.focus-reward-glow {
+  position: absolute; inset: -40%; z-index: 0;
+  border-radius: 50%;
+  pointer-events: none; opacity: 0.12;
+  animation: rewardGlow 3s ease-in-out infinite;
+}
+.reward-premium .focus-reward-glow { background: radial-gradient(circle, #6366f1 0%, transparent 70%); }
+.reward-ultra   .focus-reward-glow { background: radial-gradient(circle, #f59e0b 0%, transparent 70%); }
+@keyframes rewardGlow { 0%,100%{opacity:.1} 50%{opacity:.22} }
+
+.focus-reward-emoji {
+  position: relative; z-index: 1;
+  font-size: 3.4rem; margin-bottom: 10px;
+  animation: rewardBounce 0.6s cubic-bezier(.36,.07,.19,.97) both;
+}
+@keyframes rewardBounce {
+  0%   { transform: scale(0.4) rotate(-12deg); opacity:0 }
+  60%  { transform: scale(1.2) rotate(4deg);   opacity:1 }
+  100% { transform: scale(1)   rotate(0deg);   opacity:1 }
+}
+.focus-reward-badge {
+  position: relative; z-index: 1;
+  display: inline-block; padding: 5px 14px;
+  border-radius: 20px; font-size: 0.72rem;
+  font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; margin-bottom: 14px;
+}
+.badge-premium { background: rgba(99,102,241,0.15); color: #818cf8; border: 1px solid rgba(99,102,241,0.3); }
+.badge-ultra   { background: rgba(245,158,11,0.15); color: #fbbf24; border: 1px solid rgba(245,158,11,0.3); }
+
+.focus-reward-title {
+  position: relative; z-index: 1;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.9rem; line-height: 1.15;
+  color: var(--t1); margin-bottom: 10px;
+}
+.reward-premium-text { color: #818cf8; }
+.reward-ultra-text   { color: #fbbf24; }
+
+.focus-reward-sub {
+  position: relative; z-index: 1;
+  font-size: 0.88rem; color: var(--t3); line-height: 1.55;
+  margin-bottom: 20px;
+}
+.focus-reward-perks {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; gap: 7px;
+  text-align: left; margin-bottom: 24px;
+}
+.focus-reward-perk {
+  font-size: 0.84rem; color: var(--t2);
+  display: flex; align-items: center; gap: 8px;
+}
+.focus-perk-check {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: rgba(99,102,241,0.15); color: #818cf8;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 700; flex-shrink: 0;
+}
+.reward-ultra .focus-perk-check { background: rgba(245,158,11,0.15); color: #fbbf24; }
+
+.focus-reward-cta {
+  position: relative; z-index: 1;
+  width: 100%; padding: 13px;
+  border-radius: 10px; border: none;
+  font-size: 0.95rem; font-weight: 700;
+  cursor: pointer; margin-bottom: 10px;
+}
+.cta-premium {
+  background: linear-gradient(135deg, #4f46e5, #818cf8);
+  color: #fff; box-shadow: 0 4px 16px rgba(99,102,241,0.35);
+}
+.cta-ultra {
+  background: linear-gradient(135deg, #d97706, #fbbf24);
+  color: #fff; box-shadow: 0 4px 16px rgba(245,158,11,0.35);
+}
+.focus-reward-fine {
+  position: relative; z-index: 1;
+  font-size: 0.72rem; color: var(--t4); margin: 0;
+}

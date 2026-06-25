@@ -1,0 +1,122 @@
+/* studio/src/components/PermissionsGate/PermissionsGate.css */
+.spg-backdrop {
+  position: fixed; inset: 0; z-index: 9990;
+  background: rgba(7,7,20,0.75);
+  backdrop-filter: blur(10px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+
+.spg-modal {
+  width: 100%; max-width: 500px;
+  background: var(--st-surf1);
+  border: 1px solid var(--st-border2);
+  border-radius: 22px;
+  padding: 32px;
+  display: flex; flex-direction: column; gap: 22px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+}
+
+/* Header */
+.spg-brand { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; }
+.spg-brand-aura {
+  font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800;
+  color: var(--st-t1);
+}
+.spg-brand-studio {
+  font-size: 11px; font-weight: 700;
+  padding: 2px 8px; border-radius: 6px;
+  background: var(--st-rose-bg); color: var(--st-rose);
+  border: 1px solid var(--st-rose-border);
+}
+.spg-title {
+  font-family: 'Syne', sans-serif; font-size: 19px; font-weight: 700;
+  color: var(--st-t1); line-height: 1.2;
+}
+.spg-sub { font-size: 13px; color: var(--st-t3); line-height: 1.55; }
+
+/* Permission rows */
+.spg-list { display: flex; flex-direction: column; gap: 8px; }
+
+.spg-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 16px;
+  background: var(--st-surf2);
+  border: 1px solid var(--st-border);
+  border-radius: 12px;
+  transition: opacity 0.2s;
+}
+.spg-row-done { opacity: 0.7; }
+
+.spg-row-icon { font-size: 22px; flex-shrink: 0; }
+
+.spg-row-body { flex: 1; min-width: 0; }
+.spg-row-title { font-size: 13.5px; font-weight: 700; color: var(--st-t1); }
+.spg-row-desc  { font-size: 12px; color: var(--st-t3); margin-top: 2px; line-height: 1.45; }
+.spg-row-why   { font-size: 10.5px; color: var(--st-active-bar); margin-top: 4px; font-weight: 600; }
+
+.spg-row-action { flex-shrink: 0; }
+.spg-row-btns { display: flex; flex-direction: column; gap: 5px; }
+
+.spg-allow-btn {
+  padding: 6px 16px; border-radius: 8px;
+  background: var(--st-rose); color: #fff;
+  border: none; font-size: 12.5px; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+  transition: opacity 0.14s;
+  white-space: nowrap;
+}
+.spg-allow-btn:hover { opacity: 0.85; }
+
+.spg-skip-btn {
+  padding: 5px 12px; border-radius: 7px;
+  background: none; border: 1px solid var(--st-border2);
+  color: var(--st-t3); font-size: 12px; cursor: pointer;
+  font-family: inherit; transition: background 0.13s;
+}
+.spg-skip-btn:hover { background: var(--st-surf3); }
+
+.spg-status {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12px; font-weight: 700; white-space: nowrap;
+}
+.spg-requesting { color: var(--st-t3); }
+.spg-granted    { color: var(--st-green); }
+.spg-denied     { color: var(--st-red); }
+.spg-unsupported { color: var(--st-t4); }
+
+.spg-spinner {
+  display: inline-block; width: 12px; height: 12px;
+  border: 2px solid var(--st-surf4); border-top-color: var(--st-t3);
+  border-radius: 50%; animation: spg-spin 0.7s linear infinite;
+}
+@keyframes spg-spin { to { transform: rotate(360deg); } }
+
+/* Footer */
+.spg-footer { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+
+.spg-allow-all-btn {
+  width: 100%; padding: 11px;
+  background: linear-gradient(135deg, var(--st-rose), var(--st-indigo));
+  color: #fff; border: none; border-radius: 10px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: opacity 0.15s;
+}
+.spg-allow-all-btn:hover { opacity: 0.88; }
+
+.spg-done-btn {
+  width: 100%; padding: 11px;
+  background: var(--st-green); color: #fff;
+  border: none; border-radius: 10px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: opacity 0.15s;
+}
+.spg-done-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.spg-done-btn:not(:disabled):hover { opacity: 0.88; }
+
+.spg-skip-link {
+  background: none; border: none;
+  color: var(--st-t4); font-size: 12px; cursor: pointer;
+  font-family: inherit; text-decoration: underline;
+}
+.spg-skip-link:hover { color: var(--st-t2); }

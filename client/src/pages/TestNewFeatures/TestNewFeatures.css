@@ -1,0 +1,20 @@
+/* FILE: client/src/pages/TestNewFeatures/TestNewFeatures.css */
+.tnf-experiment-item { align-items: center; gap: 16px; }
+.tnf-status-pill {
+  font-size: 8px; font-weight: 800; letter-spacing: 1.5px;
+  padding: 2px 7px; border-radius: 20px; color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+}
+.tnf-enrolled { font-size: 11px; color: var(--t3); margin-top: 4px; font-weight: 300; }
+.tnf-join-btn {
+  flex-shrink: 0; padding: 8px 20px;
+  border-radius: 8px; border: 1px solid var(--a-border, rgba(139,92,246,0.4));
+  background: none; color: var(--a);
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: all 0.2s;
+}
+.tnf-join-btn:hover { background: var(--a-dim, rgba(139,92,246,0.1)); }
+.tnf-join-btn.joined {
+  background: var(--a); color: #fff; border-color: transparent;
+}
+.tnf-join-btn.joined:hover { background: #6d28d9; }

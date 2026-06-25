@@ -1,0 +1,304 @@
+/* FILE: client/src/pages/Playlists/PlaylistDetail.css */
+
+.pld-page {
+  min-height: 100vh;
+  padding: var(--sp-md) var(--sp-lg) var(--sp-2xl);
+}
+
+.pld-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* ── Sidebar ── */
+.pld-sidebar {
+  position: sticky;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pld-cover-wrap {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+}
+.pld-cover {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+}
+.pld-cover-count-badge {
+  position: absolute; bottom: 0; right: 0;
+  background: rgba(0,0,0,0.75);
+  color: #fff; padding: 6px 12px;
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600;
+  border-radius: 14px 0 0 0;
+}
+
+.pld-meta { display: flex; flex-direction: column; gap: 6px; }
+.pld-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem; font-weight: 800;
+  color: var(--t1, #fff); line-height: 1.2;
+  margin: 0;
+}
+.pld-owner {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; color: var(--t3, rgba(255,255,255,0.5));
+}
+.pld-owner-link {
+  color: var(--a, #b5294e); text-decoration: none; font-weight: 600;
+}
+.pld-owner-link:hover { text-decoration: underline; }
+
+.pld-stats {
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; color: var(--t3, rgba(255,255,255,0.45));
+}
+.pld-privacy {
+  display: flex; align-items: center; gap: 4px;
+}
+.pld-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; color: var(--t2, rgba(255,255,255,0.65));
+  line-height: 1.5; margin: 0;
+}
+
+/* ── Actions ── */
+.pld-actions {
+  display: flex; gap: 10px;
+}
+.pld-play-all-btn, .pld-shuffle-btn {
+  flex: 1; padding: 11px 16px; border-radius: 99px;
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 14px;
+  cursor: pointer; transition: opacity 0.15s;
+}
+.pld-play-all-btn {
+  background: var(--a, #b5294e); color: #fff;
+  box-shadow: 0 4px 16px rgba(181,41,78,0.35);
+}
+.pld-shuffle-btn {
+  background: rgba(255,255,255,0.08); color: var(--t1, #fff);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.pld-shuffle-btn:hover { background: rgba(255,255,255,0.14); }
+.pld-play-all-btn:hover { opacity: 0.88; }
+
+.pld-back-btn {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px;
+  color: var(--t3, rgba(255,255,255,0.4));
+  transition: color 0.14s; align-self: flex-start;
+}
+.pld-back-btn:hover { color: var(--t1, #fff); }
+
+/* ── Video rows ── */
+.pld-videos {
+  display: flex; flex-direction: column; gap: 4px;
+  padding-top: 4px;
+}
+
+.pld-video-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; border-radius: 12px;
+  transition: background 0.14s;
+}
+.pld-video-row:hover { background: rgba(255,255,255,0.05); }
+
+.pld-row-num {
+  width: 28px; text-align: center; flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--t3, rgba(255,255,255,0.35));
+}
+
+.pld-row-thumb-wrap {
+  position: relative; width: 160px; flex-shrink: 0;
+  border-radius: 8px; overflow: hidden;
+  aspect-ratio: 16/9;
+}
+.pld-row-thumb {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.pld-row-dur {
+  position: absolute; bottom: 4px; right: 6px;
+  background: rgba(0,0,0,0.78); color: #fff;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  padding: 2px 5px; border-radius: 4px;
+}
+.pld-row-play-overlay {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0); color: #fff;
+  opacity: 0; transition: background 0.15s, opacity 0.15s;
+}
+.pld-row-thumb-wrap:hover .pld-row-play-overlay {
+  background: rgba(0,0,0,0.45); opacity: 1;
+}
+
+.pld-row-info {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.pld-row-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 600;
+  color: var(--t1, #fff); text-decoration: none;
+  display: -webkit-box; -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical; overflow: hidden;
+  line-height: 1.35;
+  transition: color 0.13s;
+}
+.pld-row-title:hover { color: var(--a, #b5294e); }
+.pld-row-channel {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; color: var(--t3, rgba(255,255,255,0.45));
+  text-decoration: none;
+}
+.pld-row-channel:hover { color: var(--t2, rgba(255,255,255,0.7)); }
+.pld-row-meta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px; color: var(--t3, rgba(255,255,255,0.35));
+}
+
+/* ── Row menu ── */
+.pld-row-menu-wrap { position: relative; }
+.pld-row-dots {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--t3, rgba(255,255,255,0.4));
+  opacity: 0; transition: opacity 0.13s, background 0.13s;
+}
+.pld-video-row:hover .pld-row-dots { opacity: 1; }
+.pld-row-dots:hover { background: rgba(255,255,255,0.1); color: var(--t1, #fff); }
+.pld-row-menu {
+  position: absolute; top: 36px; right: 0; z-index: 50;
+  background: rgba(14,12,28,0.97);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px; padding: 4px; min-width: 140px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+.pld-row-menu-item {
+  display: flex; align-items: center; gap: 8px;
+  width: 100%; padding: 8px 12px; border-radius: 7px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px;
+  color: rgba(255,255,255,0.8); text-align: left;
+  transition: background 0.12s;
+}
+.pld-row-menu-item:hover { background: rgba(255,255,255,0.07); }
+.pld-row-menu-item.danger { color: #ff4d6d; }
+.pld-row-menu-item.danger:hover { background: rgba(255,77,109,0.1); }
+
+/* ── Empty / Error ── */
+.pld-empty, .pld-error {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 12px; padding: 80px 32px; text-align: center;
+}
+.pld-empty-icon, .pld-error-icon { font-size: 3rem; }
+.pld-empty-title, .pld-error-title {
+  font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700;
+  color: var(--t1, #fff); margin: 0;
+}
+.pld-empty-sub, .pld-error-sub {
+  font-family: 'DM Sans', sans-serif; font-size: 13px;
+  color: var(--t3, rgba(255,255,255,0.4)); max-width: 280px;
+}
+.pld-error-btn {
+  margin-top: 8px; padding: 10px 24px; border-radius: 99px;
+  background: var(--a, #b5294e); color: #fff; text-decoration: none;
+  font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 14px;
+}
+
+/* ── Skeleton ── */
+.skel {
+  background: linear-gradient(90deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.06) 100%);
+  background-size: 200% 100%;
+  animation: skel-shimmer 1.4s infinite;
+}
+@keyframes skel-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .pld-layout { grid-template-columns: 1fr; }
+  .pld-sidebar { position: static; }
+  .pld-cover-wrap { max-width: 360px; margin: 0 auto; }
+}
+@media (max-width: 600px) {
+  .pld-page { padding: 12px 12px 48px; }
+  .pld-row-thumb-wrap { width: 120px; }
+  .pld-row-num { display: none; }
+}
+/* ── Type filter tabs (All / Videos / Shorts) ── */
+.pld-type-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.pld-type-tab {
+  padding: 6px 16px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--gbd);
+  background: var(--s2);
+  color: var(--t2);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.16s;
+}
+.pld-type-tab:hover { background: var(--s3); color: var(--t1); }
+.pld-type-tab.active {
+  background: var(--a);
+  color: #fff;
+  border-color: var(--a);
+}
+/* ── SHORT ROW in playlist — 16:9 rectangle, vertical thumb letterboxed ── */
+.pld-short-row { align-items: center; }
+
+/* Same outer shape as VideoRow thumb but black bg for pillarbox */
+.pld-short-thumb-wrap {
+  background: #090909 !important;
+  position: relative;
+}
+
+/* Vertical thumbnail fits inside the 16:9 box — pillarboxed, not cropped */
+.pld-short-thumb-img {
+  object-fit: contain !important;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+/* "Short" badge in bottom-left corner */
+.pld-short-badge {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  background: rgba(181, 41, 78, 0.9);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 2;
+}

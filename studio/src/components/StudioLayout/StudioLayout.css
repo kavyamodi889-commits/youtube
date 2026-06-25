@@ -1,0 +1,26 @@
+/* studio/src/components/StudioLayout/StudioLayout.css */
+
+.st-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.st-body {
+  display: flex;
+  flex: 1;
+  padding-top: var(--st-nav-h);
+}
+
+.st-main {
+  flex: 1;
+  margin-left: var(--st-sidebar-w);
+  min-height: calc(100vh - var(--st-nav-h));
+  background: var(--st-bg);
+  transition: margin-left 0.28s cubic-bezier(0.4,0,0.2,1), background 0.25s;
+}
+
+/* When sidebar is hidden — main takes full width */
+.st-main-wide {
+  margin-left: 0;
+}

@@ -1,0 +1,208 @@
+/* FILE: client/src/components/Modals/modal-base.css
+   Shared styles for all create-flow modals.
+   Import this in each modal's CSS file.
+*/
+
+/* ── BACKDROP ──
+   Fixed, full-screen, renders above everything.
+   z-index 9999 ensures it's always on top regardless of stacking context.
+*/
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  /* Prevent any transform or stacking issues */
+  transform: none !important;
+}
+
+/* ── MODAL SHELL ── */
+.modal-shell {
+  background: #0d0d1f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  width: 100%;
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── MODAL HEADER ── */
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  flex-shrink: 0;
+}
+.modal-header-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(var(--a-rgb, 220, 38, 127), 0.12);
+  border: 1px solid rgba(var(--a-rgb, 220, 38, 127), 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--a);
+  flex-shrink: 0;
+}
+.modal-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+  margin: 0;
+  flex: 1;
+}
+.modal-close-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+/* ── MODAL BODY ── */
+.modal-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+  max-height: calc(90vh - 140px);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+
+/* ── MODAL FOOTER ── */
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 14px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  flex-shrink: 0;
+}
+
+/* ── SHARED FIELD STYLES ── */
+.mf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.mf-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.mf-req { color: var(--a); }
+.mf-input,
+.mf-textarea,
+.mf-select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.mf-input:focus,
+.mf-textarea:focus,
+.mf-select:focus {
+  border-color: rgba(var(--a-rgb, 220, 38, 127), 0.5);
+  box-shadow: 0 0 0 3px rgba(var(--a-rgb, 220, 38, 127), 0.1);
+}
+.mf-input::placeholder,
+.mf-textarea::placeholder { color: rgba(255, 255, 255, 0.25); }
+.mf-textarea { resize: vertical; min-height: 80px; }
+.mf-select { cursor: pointer; }
+.mf-select option { background: #1a1a2e; }
+
+/* ── SHARED BUTTON STYLES ── */
+.mbtn-cancel {
+  padding: 8px 20px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.mbtn-cancel:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.mbtn-primary {
+  padding: 8px 22px;
+  border-radius: 99px;
+  background: var(--a);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(var(--a-rgb, 220, 38, 127), 0.4);
+  transition: box-shadow 0.2s, opacity 0.2s;
+}
+.mbtn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.mbtn-primary:not(:disabled):hover {
+  box-shadow: 0 6px 20px rgba(var(--a-rgb, 220, 38, 127), 0.55);
+}
+
+/* ── INTRO TEXT ── */
+.modal-intro {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── 2 COLUMN ROW ── */
+.mf-row {
+  display: flex;
+  gap: 12px;
+}
+.mf-row .mf-field { flex: 1; }

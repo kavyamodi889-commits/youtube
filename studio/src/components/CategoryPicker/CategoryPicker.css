@@ -1,0 +1,97 @@
+/* FILE: studio/src/components/CategoryPicker/CategoryPicker.css */
+.cp-wrap { display: flex; flex-direction: column; gap: 0; }
+
+.cp-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--st-t2);
+  font-family: 'Space Grotesk', sans-serif;
+  margin-bottom: 5px;
+  display: block;
+}
+.cp-sublabel { margin-top: 10px; }
+.cp-optional { font-size: 11px; color: var(--st-t4); font-weight: 400; }
+
+.cp-row {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.cp-row select { flex: 1; }
+
+.cp-add-btn {
+  flex-shrink: 0;
+  padding: 0 12px;
+  height: 36px;
+  border-radius: 7px;
+  border: 1.5px solid var(--st-rose);
+  background: transparent;
+  color: var(--st-rose);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.15s, color 0.15s;
+}
+.cp-add-btn:hover { background: var(--st-rose); color: #fff; }
+
+.cp-new-row {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  margin-top: 7px;
+  margin-bottom: 3px;
+}
+
+.cp-input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 7px;
+  border: 1px solid var(--st-border2);
+  background: var(--st-surf2);
+  color: var(--st-t1);
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  box-sizing: border-box;
+}
+.cp-input:focus { border-color: var(--st-rose); }
+.cp-input::placeholder { color: var(--st-t4); }
+
+.cp-save-btn {
+  padding: 0 14px;
+  height: 34px;
+  border-radius: 7px;
+  border: none;
+  background: var(--st-rose);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: 'DM Sans', sans-serif;
+  transition: opacity 0.15s;
+}
+.cp-save-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.cp-cancel-btn {
+  padding: 0 10px;
+  height: 34px;
+  border-radius: 7px;
+  border: 1px solid var(--st-border2);
+  background: transparent;
+  color: var(--st-t3);
+  font-size: 13px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.cp-cancel-btn:hover { color: var(--st-t1); }
+
+.cp-error {
+  color: var(--st-red, #e05252);
+  font-size: 11px;
+  margin: 4px 0 0;
+  font-family: 'DM Sans', sans-serif;
+}

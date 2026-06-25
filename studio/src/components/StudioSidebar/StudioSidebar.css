@@ -1,0 +1,397 @@
+/* studio/src/components/StudioSidebar/StudioSidebar.css */
+
+/* ═══════════════════════════════════════════
+   SIDEBAR SHELL
+═══════════════════════════════════════════ */
+.sside {
+  position: fixed;
+  top: var(--st-nav-h);
+  left: 0;
+  bottom: 0;
+  width: var(--st-sidebar-w);
+  background: var(--st-surf1);
+  border-right: 1px solid var(--st-border);
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.28s cubic-bezier(0.4,0,0.2,1), background 0.25s, border-color 0.25s;
+}
+
+/* Hamburger hides it by sliding left */
+.sside-hidden {
+  transform: translateX(-100%);
+}
+
+/* ═══════════════════════════════════════════
+   CHANNEL CARD
+═══════════════════════════════════════════ */
+.sside-channel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 20px 20px;
+  text-align: center;
+  /* Subtle gradient background on the card area */
+  background: linear-gradient(
+    180deg,
+    rgba(181,41,78,0.04) 0%,
+    transparent 100%
+  );
+  border-bottom: 1px solid var(--st-border);
+  transition: background 0.25s;
+}
+
+/* Avatar */
+.sside-ch-av-wrap {
+  position: relative;
+  margin-bottom: 12px;
+}
+.sside-ch-av {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  /* Studio teal→amber gradient — different from main AURA */
+  background: linear-gradient(135deg, #0ea5a0 0%, #d97706 100%);
+  color: #fff;
+  font-family: var(--st-font-display);
+  font-size: 26px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 0 0 3px var(--st-surf1),
+    0 0 0 5px rgba(14,165,160,0.30);
+  transition: box-shadow 0.25s;
+}
+
+/* Online status dot */
+.sside-ch-status {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #22c55e;
+  border: 2.5px solid var(--st-surf1);
+  transition: border-color 0.25s;
+}
+
+/* Channel name */
+.sside-ch-name {
+  font-family: var(--st-font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--st-t1);
+  letter-spacing: -0.2px;
+  margin-bottom: 3px;
+  transition: color 0.25s;
+}
+
+/* Handle */
+.sside-ch-handle {
+  font-family: var(--st-font-mono);
+  font-size: 11px;
+  color: var(--st-t3);
+  margin-bottom: 16px;
+  transition: color 0.25s;
+}
+
+/* Quick stats row */
+.sside-ch-stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  background: var(--st-surf2);
+  border: 1px solid var(--st-border);
+  border-radius: 12px;
+  padding: 10px 0;
+  margin-bottom: 14px;
+  transition: background 0.25s, border-color 0.25s;
+}
+.sside-ch-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.sside-ch-stat-val {
+  font-family: var(--st-font-display);
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--st-t1);
+  letter-spacing: -0.3px;
+  transition: color 0.25s;
+}
+.sside-ch-stat-lbl {
+  font-family: var(--st-font-mono);
+  font-size: 8.5px;
+  color: var(--st-t4);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  transition: color 0.25s;
+}
+.sside-ch-stat-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--st-border);
+  flex-shrink: 0;
+}
+
+/* View on AURA button */
+.sside-ch-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 9px;
+  border: 1px solid var(--st-border2);
+  background: transparent;
+  color: var(--st-t2);
+  font-family: var(--st-font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  transition: all 0.16s ease;
+  cursor: pointer;
+}
+.sside-ch-view-btn:hover {
+  background: var(--sn-teal-bg);
+  border-color: var(--sn-teal-border);
+  color: var(--sn-teal);
+}
+.sside-ch-view-btn svg {
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: opacity 0.16s;
+}
+.sside-ch-view-btn:hover svg { opacity: 1; }
+
+/* ═══════════════════════════════════════════
+   NAV SECTIONS
+═══════════════════════════════════════════ */
+.sside-nav {
+  flex: 1;
+  padding: 0 0 8px;
+}
+
+.sside-section {
+  padding: 0 10px;
+}
+
+/* Divider */
+.sside-divider {
+  height: 1px;
+  background: var(--st-border);
+  margin: 6px 0;
+  transition: background 0.25s;
+}
+
+/* Section label */
+.sside-section-label {
+  font-family: var(--st-font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--st-t4);
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  padding: 10px 10px 5px;
+  transition: color 0.25s;
+}
+
+/* ═══════════════════════════════════════════
+   NAV ITEMS — AURA style
+═══════════════════════════════════════════ */
+.sside-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  color: var(--st-t2);
+  font-family: var(--st-font-body);
+  font-size: 13.5px;
+  font-weight: 500;
+  position: relative;
+  white-space: nowrap;
+  margin-bottom: 1px;
+  /* Transition for hover slide + theme */
+  transition:
+    background 0.14s,
+    color 0.14s,
+    transform 0.16s cubic-bezier(0.34,1.56,0.64,1),
+    border-color 0.14s;
+  /* Left border accent (hidden by default) */
+  border-left: 2px solid transparent;
+}
+
+.sside-item:hover {
+  background: var(--st-surf3);
+  color: var(--st-t1);
+  transform: translateX(3px);
+}
+
+/* Active state — teal accent, studio's color */
+.sside-item-active {
+  background: var(--st-active-bg) !important;
+  color: var(--sn-teal) !important;
+  font-weight: 600;
+  border-left: 2px solid var(--st-active-bar) !important;
+  transform: translateX(0) !important;
+}
+
+.sside-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  color: var(--st-t3);
+  transition: color 0.14s;
+}
+.sside-item:hover .sside-item-icon { color: var(--st-t1); }
+.sside-item-active .sside-item-icon { color: var(--sn-teal) !important; }
+
+.sside-item-label {
+  flex: 1;
+  min-width: 0;
+  transition: color 0.14s;
+}
+
+/* ── Special: Earn item — amber gradient like a reward ── */
+.sside-item-earn .sside-item-icon { color: var(--sn-amber) !important; }
+.sside-item-earn .sside-item-label {
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}
+.sside-item-earn:hover,
+.sside-item-earn.sside-item-active {
+  background: rgba(217,119,6,0.10) !important;
+  border-left-color: var(--sn-amber) !important;
+}
+
+/* ═══════════════════════════════════════════
+   BADGES
+═══════════════════════════════════════════ */
+.sside-badge {
+  font-family: var(--st-font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 99px;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+
+/* Count badge — dark pill */
+.sside-badge-count {
+  background: var(--st-surf4);
+  color: var(--st-t2);
+  border: 1px solid var(--st-border2);
+}
+.sside-item-active .sside-badge-count {
+  background: var(--sn-teal-bg);
+  color: var(--sn-teal);
+  border-color: var(--sn-teal-border);
+}
+
+/* NEW badge — green */
+.sside-badge-new {
+  background: var(--st-green-bg);
+  color: var(--st-green);
+  border: 1px solid rgba(34,197,94,0.22);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.sside-badge-live {
+  background: rgba(231,76,60,0.15);
+  color: #e74c3c;
+  border: 1px solid rgba(231,76,60,0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  animation: sside-live-pulse 2s ease infinite;
+}
+@keyframes sside-live-pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+.sside-footer {
+  padding: 0 10px 20px;
+  flex-shrink: 0;
+}
+.sside-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  padding: 8px 2px 6px;
+}
+.sside-footer-links a {
+  font-size: 11px;
+  color: var(--st-t4);
+  transition: color 0.14s;
+}
+.sside-footer-links a:hover { color: var(--st-t2); }
+
+.sside-footer-copy {
+  font-family: var(--st-font-mono);
+  font-size: 10px;
+  color: var(--st-t4);
+  padding: 2px 2px;
+  transition: color 0.25s;
+}
+.sside-ch-av-img {
+  width: 100%; height: 100%;
+  border-radius: 50%; object-fit: cover;
+}
+/* ── Back to AURA btn ── */
+.sside-back-aura-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--st-t3);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  cursor: pointer;
+}
+.sside-back-aura-btn:hover {
+  background: var(--st-surf3);
+  color: var(--st-t1);
+}
+
+/* ── Logout btn ── */
+.sside-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--st-red);
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+.sside-logout-btn:hover {
+  background: var(--st-red-bg);
+}

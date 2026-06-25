@@ -1,0 +1,329 @@
+/* FILE: client/src/pages/Wellbeing/Wellbeing.css */
+
+.wb-page {
+  min-height: 100vh;
+  padding: var(--sp-md) var(--sp-lg) var(--sp-2xl);
+  display: flex; flex-direction: column; gap: 24px;
+}
+
+/* ── Header ── */
+.wb-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+.wb-title {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 1.7rem; color: var(--t1); margin: 0;
+}
+.wb-subtitle { font-size: 0.875rem; color: var(--t3); margin: 4px 0 0; }
+
+.wb-period-tabs { display: flex; gap: 6px; }
+.wb-period-tab {
+  padding: 7px 16px; border-radius: 99px;
+  background: var(--s2); border: 1px solid var(--gbd);
+  color: var(--t2); font-family: 'DM Sans', sans-serif;
+  font-size: 13px; cursor: pointer; transition: all 0.15s;
+}
+.wb-period-tab:hover  { background: var(--s3); color: var(--t1); }
+.wb-period-tab.active { background: var(--a); border-color: var(--a); color: #fff; font-weight: 600; }
+
+/* ── Error / loading ── */
+.wb-error {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(166,60,60,0.1); border: 1px solid var(--err);
+  border-radius: 10px; padding: 12px 16px;
+  font-size: 14px; color: var(--err);
+}
+.wb-error button {
+  padding: 5px 14px; border-radius: 6px; background: var(--err);
+  border: none; color: #fff; cursor: pointer; font-size: 12px;
+}
+.wb-loading {
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px; padding: 80px 0; color: var(--t3); font-size: 14px;
+}
+.wb-spinner {
+  width: 28px; height: 28px; border: 3px solid var(--s3);
+  border-top-color: var(--a); border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Grid ── */
+.wb-grid { display: flex; flex-direction: column; gap: 20px; }
+
+/* ── Stat cards ── */
+.wb-stats-row {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+}
+@media (max-width: 900px) { .wb-stats-row { grid-template-columns: repeat(2, 1fr); } }
+
+.wb-stat-card {
+  background: var(--s1); border: 1px solid var(--gbd);
+  border-radius: 16px; padding: 20px;
+  display: flex; flex-direction: column; gap: 4px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 var(--gs);
+}
+.wb-stat-icon  { font-size: 1.4rem; }
+.wb-stat-value {
+  font-family: 'Bebas Neue', sans-serif; font-size: 2rem;
+  color: var(--t1); line-height: 1; margin-top: 4px;
+}
+.wb-stat-label { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px; color: var(--t2); }
+.wb-stat-sub   { font-size: 11px; color: var(--t3); }
+
+/* ── Card ── */
+.wb-card {
+  background: var(--s1); border: 1px solid var(--gbd);
+  border-radius: 16px; padding: 22px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 var(--gs);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.wb-card-full { width: 100%; }
+.wb-card-title {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 14px; color: var(--t1); margin: 0;
+}
+/* Title + hint always grouped tightly */
+.wb-card-title-group { display: flex; flex-direction: column; gap: 2px; }
+.wb-card-hint  { font-size: 11px; color: var(--t3); margin: 0; line-height: 1.4; }
+.wb-empty-hint { font-size: 13px; color: var(--t3); padding: 20px 0; text-align: center; }
+
+.wb-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 768px) { .wb-row-2 { grid-template-columns: 1fr; } }
+
+/* ── Score card ── */
+.wb-score-wrap { display: flex; align-items: center; gap: 20px; }
+.wb-score-ring {
+  position: relative; width: 120px; height: 120px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.wb-score-num {
+  position: absolute; font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem; color: var(--t1);
+}
+.wb-score-info  { display: flex; flex-direction: column; gap: 6px; }
+.wb-score-label { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: var(--t1); }
+.wb-score-hint  { font-size: 12px; color: var(--t3); line-height: 1.5; margin: 0; }
+.wb-focus-cta {
+  font-size: 13px; color: var(--a); text-decoration: none;
+  font-family: 'DM Sans', sans-serif; font-weight: 600; transition: opacity 0.15s;
+}
+.wb-focus-cta:hover { opacity: 0.75; }
+
+/* ── Donut ── */
+.wb-donut-section { display: flex; align-items: center; gap: 20px; }
+.wb-donut-wrap {
+  position: relative; width: 130px; height: 130px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.wb-donut-center {
+  position: absolute; display: flex; flex-direction: column;
+  align-items: center; gap: 1px;
+}
+.wb-donut-total { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--t1); }
+.wb-donut-label { font-size: 11px; color: var(--t3); }
+.wb-donut-legend { display: flex; flex-direction: column; gap: 14px; }
+.wb-legend-item  { display: flex; align-items: flex-start; gap: 10px; }
+.wb-legend-dot   { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
+.wb-legend-label { font-size: 12px; color: var(--t3); }
+.wb-legend-val   { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px; color: var(--t1); }
+
+/* ── Line chart (watch time by day) — redesigned ── */
+.wb-linechart-wrap {
+  display: flex; flex-direction: column; width: 100%;
+  position: relative;
+}
+.wb-linechart-svg {
+  width: 100%; display: block; overflow: visible;
+  height: 120px;
+}
+.wb-linechart-labels {
+  display: flex; justify-content: space-between;
+  font-size: 10px; color: var(--t3);
+  margin-top: 6px;
+}
+.wb-linechart-labels span { flex: 1; text-align: center; white-space: nowrap; }
+.wb-linechart-labels span:first-child { text-align: left; }
+.wb-linechart-labels span:last-child  { text-align: right; }
+
+/* Y-axis grid lines */
+.wb-linechart-grid line {
+  stroke: var(--gbd); stroke-width: 1; stroke-dasharray: 3 3;
+}
+
+/* ── Heatmap ── */
+.wb-heatmap { display: flex; align-items: flex-end; gap: 3px; height: 60px; }
+.wb-heatmap-cell { flex: 1; display: flex; align-items: flex-end; height: 100%; }
+.wb-heatmap-fill {
+  width: 100%; background: var(--a); border-radius: 2px 2px 0 0;
+  transition: height 0.5s ease;
+}
+.wb-hour-labels {
+  display: flex; justify-content: space-between;
+  font-size: 10px; color: var(--t3); margin-top: 4px;
+}
+
+/* ── Active hours header — fixed gap ── */
+.wb-active-hours-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+}
+.wb-active-hours-header-text {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.wb-active-hours-header .wb-card-title { margin: 0; }
+.wb-active-hours-header .wb-card-hint  { margin: 0; }
+.wb-hour-day-tabs { display: flex; flex-wrap: wrap; gap: 4px; }
+.wb-hour-day-tab {
+  padding: 3px 10px; border-radius: 99px;
+  border: 1px solid var(--gbd); background: var(--s2);
+  color: var(--t3); font-size: 11px; font-weight: 500;
+  cursor: pointer; transition: all 0.15s;
+}
+.wb-hour-day-tab:hover  { background: var(--s3); color: var(--t1); }
+.wb-hour-day-tab.active { background: var(--a); border-color: var(--a); color: #fff; font-weight: 700; }
+
+/* ── Category vertical bar chart — fills card properly ── */
+.wb-cat-barchart {
+  display: flex; align-items: flex-end; gap: 10px;
+  width: 100%; height: 160px; /* fixed height — no empty stretch */
+}
+.wb-cat-bar-col {
+  flex: 1; height: 100%; display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-end; gap: 0;
+}
+.wb-cat-bar-track {
+  width: 100%; background: var(--s3); border-radius: 6px 6px 0 0;
+  display: flex; align-items: flex-end; overflow: hidden;
+  flex: 1; /* fills the column height minus labels below */
+}
+.wb-cat-bar-fill {
+  width: 100%; border-radius: 6px 6px 0 0;
+}
+.wb-cat-bar-val {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 12px; color: var(--t1); white-space: nowrap;
+  line-height: 1; margin-top: 6px; flex-shrink: 0;
+}
+.wb-cat-bar-val span { font-size: 10px; color: var(--t3); }
+.wb-cat-bar-label {
+  font-size: 10px; color: var(--t3); text-align: center;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  width: 100%; padding: 0 2px; margin-top: 3px; flex-shrink: 0;
+}
+
+/* ── Top videos list ── */
+.wb-top-videos { display: flex; flex-direction: column; gap: 6px; }
+.wb-top-video-row {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid var(--s2);
+}
+.wb-top-video-row:last-child { border-bottom: none; }
+.wb-top-idx {
+  font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem;
+  color: var(--t3); width: 20px; flex-shrink: 0;
+}
+.wb-top-info  { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.wb-top-title { font-size: 13px; font-weight: 500; color: var(--t1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wb-top-meta  { font-size: 11px; color: var(--t3); }
+.wb-top-time  { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px; color: var(--a); flex-shrink: 0; }
+
+/* ══════════════════════════════════════════════
+   FOCUS ACTIVITY FULL-WIDTH CARD
+══════════════════════════════════════════════ */
+.wb-focus-full {
+  gap: 20px;
+  border-color: var(--b-border);
+  background: linear-gradient(135deg, var(--s1) 0%, rgba(102,84,168,0.06) 100%);
+}
+
+/* Focus header — tight title+hint group */
+.wb-focus-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+}
+.wb-focus-header-text {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.wb-focus-header .wb-card-title { margin: 0; }
+.wb-focus-header .wb-card-hint  { margin: 0; }
+
+/* KPI row */
+.wb-focus-kpi-row {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  background: var(--s2); border-radius: 12px; padding: 16px;
+  border: 1px solid var(--s3);
+}
+.wb-focus-kpi {
+  flex: 1; min-width: 90px;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 4px; text-align: center;
+  padding: 8px 4px;
+  border-right: 1px solid var(--s3);
+}
+.wb-focus-kpi:last-child { border-right: none; }
+.wb-focus-kpi-icon { font-size: 1.2rem; }
+.wb-focus-kpi-val {
+  font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem;
+  color: var(--b); line-height: 1;
+}
+.wb-focus-kpi-label { font-size: 11px; color: var(--t3); line-height: 1.3; }
+.wb-focus-kpi-sub   { font-size: 10px; color: var(--t4); }
+.wb-focus-ring-kpi  { justify-content: center; }
+
+/* Charts row inside focus card */
+.wb-focus-charts-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+@media (max-width: 700px) { .wb-focus-charts-row { grid-template-columns: 1fr; } }
+
+.wb-focus-chart-block {
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--s2); border-radius: 10px; padding: 14px;
+  border: 1px solid var(--s3);
+}
+.wb-focus-chart-title {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+  font-size: 12px; color: var(--t2);
+}
+
+/* Focus by-day mini bars */
+.wb-focus-day-bars {
+  display: flex; align-items: flex-end; gap: 6px; height: 60px; width: 100%;
+}
+.wb-focus-day-col {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 4px; height: 100%;
+}
+.wb-focus-day-track {
+  flex: 1; width: 100%; background: var(--s3); border-radius: 4px 4px 0 0;
+  display: flex; align-items: flex-end; overflow: hidden;
+}
+.wb-focus-day-fill {
+  width: 100%; background: var(--b); border-radius: 4px 4px 0 0;
+}
+.wb-focus-day-label { font-size: 9px; color: var(--t3); }
+
+/* No sessions CTA banner */
+.wb-focus-cta-banner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+  background: var(--b-dim); border: 1px solid var(--b-border);
+  border-radius: 10px; padding: 14px 18px;
+  font-size: 13px; color: var(--t2);
+}
+
+/* ── Auth wall ── */
+.wb-auth-wall {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; min-height: 60vh; gap: 12px; text-align: center;
+}
+.wb-auth-icon  { font-size: 3rem; }
+.wb-auth-wall h2 { color: var(--t1); font-family: 'Space Grotesk', sans-serif; }
+.wb-auth-wall p  { color: var(--t3); font-size: 0.875rem; }
+.wb-cta-btn {
+  padding: 11px 28px; border-radius: 99px; background: var(--a);
+  color: #fff; text-decoration: none; font-family: 'Outfit', sans-serif;
+  font-weight: 700; font-size: 14px; margin-top: 8px; display: inline-block;
+}

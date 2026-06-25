@@ -1,0 +1,174 @@
+/* studio/src/pages/ContentDetection/ContentDetection.css */
+
+/* ── Page ── */
+.cd-page { padding: 28px 32px 80px; }
+
+/* ── Header ── */
+.cd-header {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+}
+.cd-header-left { display: flex; align-items: center; gap: 14px; }
+.cd-header-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--st-indigo-bg); border: 1px solid rgba(102,84,168,0.28);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--st-indigo); flex-shrink: 0;
+}
+.cd-title {
+  font-family: var(--st-font-display); font-weight: 800; font-size: 22px;
+  color: var(--st-t1); letter-spacing: -0.3px;
+}
+.cd-sub { font-size: 12.5px; color: var(--st-t3); margin-top: 3px; }
+
+/* ── Info bar ── */
+.cd-info-bar {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px 16px; margin-bottom: 20px;
+  background: var(--st-surf2); border: 1px solid var(--st-border);
+  border-radius: 10px; color: var(--st-t3); font-size: 12px; line-height: 1.6;
+}
+.cd-info-bar svg { flex-shrink: 0; margin-top: 1px; }
+.cd-info-bar strong { color: var(--st-t2); }
+.cd-info-bar code {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  background: var(--st-surf3); padding: 1px 5px; border-radius: 4px;
+  color: var(--sn-teal);
+}
+
+/* ── Summary cards ── */
+.cd-summary {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  margin-bottom: 20px;
+}
+.cd-sum-card {
+  background: var(--st-surf1); border: 1px solid var(--st-border);
+  border-radius: 12px; padding: 14px 16px; text-align: left;
+  transition: border-color 0.15s; cursor: pointer;
+}
+.cd-sum-card:hover  { border-color: var(--st-border2); }
+.cd-sum-card.active { border-color: var(--sn-teal); background: var(--sn-teal-bg); }
+.cd-sum-top {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 8px;
+}
+.cd-sum-label { font-size: 11px; color: var(--st-t4); text-transform: uppercase; letter-spacing: 0.5px; }
+.cd-sum-val {
+  font-family: var(--st-font-display); font-weight: 800; font-size: 24px;
+  letter-spacing: -0.5px; line-height: 1;
+}
+
+/* ── Table ── */
+.cd-table-wrap {
+  background: var(--st-surf1); border: 1px solid var(--st-border);
+  border-radius: 12px; overflow: hidden;
+}
+.cd-table { width: 100%; border-collapse: collapse; }
+.cd-table thead th {
+  padding: 10px 14px; text-align: left;
+  font-size: 11px; color: var(--st-t4);
+  font-family: var(--st-font-display); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.6px;
+  border-bottom: 1px solid var(--st-border);
+  background: var(--st-surf2);
+}
+.cd-table tbody td {
+  padding: 12px 14px; vertical-align: middle;
+  border-bottom: 1px solid var(--st-border);
+}
+.cd-row:last-child td  { border-bottom: none; }
+.cd-row { transition: background 0.12s; }
+.cd-row:hover td { background: var(--st-surf2); }
+.cd-row-open td { background: var(--st-surf2) !important; }
+
+/* ── Video cell ── */
+.cd-vid-cell { display: flex; align-items: center; gap: 12px; }
+.cd-thumb {
+  width: 72px; height: 42px; border-radius: 6px;
+  overflow: hidden; background: var(--st-surf3); flex-shrink: 0;
+}
+.cd-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.cd-thumb-empty {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center; color: var(--st-t4);
+}
+.cd-vid-title { font-size: 13px; color: var(--st-t1); font-weight: 500; margin-bottom: 3px; }
+.cd-vid-id    { font-size: 10.5px; color: var(--st-t4); font-family: 'JetBrains Mono', monospace; }
+
+/* ── Status cell ── */
+.cd-status-cell { display: flex; align-items: center; gap: 7px; }
+.cd-status-dot  { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.cd-meta { font-size: 12px; color: var(--st-t3); white-space: nowrap; }
+
+/* ── Expand button ── */
+.cd-expand-btn {
+  display: flex; align-items: center; gap: 5px;
+  padding: 5px 12px; border-radius: 7px;
+  font-size: 12px; color: var(--st-t2);
+  background: var(--st-surf3); border: 1px solid var(--st-border);
+  transition: all 0.15s;
+}
+.cd-expand-btn:hover { border-color: var(--st-border2); color: var(--st-t1); }
+.cd-expand-btn.open  { background: var(--st-yellow-bg); color: var(--st-yellow); border-color: rgba(245,158,11,0.28); }
+.cd-expand-btn svg   { transition: transform 0.2s; }
+.cd-expand-btn.open svg { transform: rotate(90deg); }
+.cd-clear-label {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12px; color: var(--st-green);
+}
+
+/* ── Detail panel ── */
+.cd-detail-row td { padding: 0 !important; }
+.cd-detail {
+  padding: 16px 20px; border-bottom: 1px solid var(--st-border);
+  background: var(--st-surf2);
+}
+.cd-detail-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px;
+}
+.cd-detail-title {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; color: var(--st-yellow);
+  font-family: var(--st-font-display);
+}
+.cd-detail-close {
+  font-size: 18px; color: var(--st-t4); line-height: 1;
+  transition: color 0.12s;
+}
+.cd-detail-close:hover { color: var(--st-t2); }
+
+.cd-detail-rows { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.cd-detail-row  {
+  display: grid; grid-template-columns: 160px 1fr;
+  gap: 10px; font-size: 12.5px;
+}
+.cd-detail-key { color: var(--st-t3); }
+.cd-detail-val { color: var(--st-t1); font-weight: 500; }
+
+.cd-detail-actions { display: flex; gap: 8px; }
+.cd-action-btn {
+  padding: 6px 14px; border-radius: 7px;
+  font-size: 12px; color: var(--st-t2);
+  background: var(--st-surf3); border: 1px solid var(--st-border);
+  transition: all 0.15s;
+}
+.cd-action-btn:hover { border-color: var(--st-border2); color: var(--st-t1); }
+
+/* ── Empty ── */
+.cd-empty {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; min-height: 240px;
+  background: var(--st-surf1); border: 1px solid var(--st-border); border-radius: 12px;
+  color: var(--st-t4); font-size: 13px;
+}
+
+/* ── Skeleton ── */
+.cd-skel {
+  background: linear-gradient(90deg, var(--st-surf3) 25%, var(--st-surf4) 50%, var(--st-surf3) 75%);
+  background-size: 200% 100%; animation: cd-shimmer 1.4s infinite;
+}
+@keyframes cd-shimmer { 0% { background-position:200% 0 } 100% { background-position:-200% 0 } }
+
+@media (max-width: 680px) {
+  .cd-summary { grid-template-columns: 1fr 1fr; }
+}

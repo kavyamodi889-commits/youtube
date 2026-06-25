@@ -1,0 +1,92 @@
+/* FILE: client/src/components/CreateMenu/CreateMenu.css */
+
+.cm-wrap { position: relative; }
+
+.cm-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  border-radius: 99px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.84rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+  transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.cm-btn:hover {
+  border-color: rgba(var(--a-rgb, 220,38,127), 0.5);
+  color: #fff;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.3), 0 0 0 2px rgba(var(--a-rgb,220,38,127),0.12);
+}
+
+.cm-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: rgba(10, 10, 22, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 6px;
+  min-width: 230px;
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.04);
+  /* NO z-index needed here — modals use createPortal so they escape the stacking context */
+  z-index: 100;
+}
+
+.cm-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.14s;
+}
+.cm-item:hover { background: rgba(255,255,255,0.06); }
+
+.cm-item-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  background: rgba(var(--a-rgb, 220,38,127), 0.1);
+  border: 1px solid rgba(var(--a-rgb, 220,38,127), 0.22);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--a, #dc267f);
+  flex-shrink: 0;
+}
+
+.cm-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cm-item-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #fff;
+}
+.cm-item-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.35);
+}
+/* Studio redirect badge */
+.cm-studio-badge {
+  font-size: 9px; font-weight: 800; letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #b5294e, #6654a8);
+  color: #fff; padding: 2px 6px; border-radius: 3px;
+  flex-shrink: 0; margin-left: auto;
+}

@@ -1,0 +1,155 @@
+/* studio/src/pages/LiveStreams/LiveStreams.css */
+.lst-page { padding: 28px 32px 60px; min-height: 100vh; }
+.lst-header {
+  display: flex; align-items: flex-start;
+  justify-content: space-between; gap: 16px; margin-bottom: 24px;
+}
+.lst-title {
+  font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800;
+  color: var(--st-t1); margin: 0 0 4px;
+}
+.lst-sub { font-size: 13px; color: var(--st-t3); margin: 0; }
+.lst-go-live-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 10px 20px; border-radius: 10px; border: none;
+  background: var(--st-rose); color: #fff;
+  font-size: 13px; font-weight: 700; text-decoration: none;
+  transition: opacity 0.15s; white-space: nowrap;
+}
+.lst-go-live-btn:hover { opacity: 0.87; }
+
+/* Tabs */
+.lst-tabs { display: flex; gap: 4px; margin-bottom: 20px; }
+.lst-tab {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 16px; border-radius: 8px; border: none;
+  background: transparent; color: var(--st-t3);
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: all 0.15s;
+}
+.lst-tab:hover { background: var(--st-surf2); color: var(--st-t1); }
+.lst-tab.lst-tab-active { background: var(--st-surf2); color: var(--st-t1); border: 1px solid var(--st-border2); }
+.lst-live-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #e74c3c;
+  animation: lc-pulse 1.4s ease infinite;
+}
+
+/* Empty */
+.lst-empty {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 12px; padding: 60px 0;
+  color: var(--st-t3); text-align: center;
+}
+.lst-empty-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: var(--st-surf2); display: flex; align-items: center;
+  justify-content: center; color: var(--st-t3);
+}
+.lst-empty p { font-size: 14px; margin: 0; }
+.lst-empty-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 18px; border-radius: 9px;
+  background: var(--st-surf2); border: 1px solid var(--st-border);
+  color: var(--st-t2); font-size: 13px; font-weight: 600;
+  text-decoration: none; transition: all 0.15s;
+}
+.lst-empty-btn:hover { background: var(--st-surf3); color: var(--st-t1); }
+
+/* Table */
+.lst-table {
+  background: var(--st-surf1); border: 1px solid var(--st-border);
+  border-radius: 14px; overflow: hidden;
+}
+.lst-thead {
+  display: grid;
+  grid-template-columns: 2fr 100px 120px 110px 110px 160px;
+  padding: 11px 18px;
+  background: var(--st-surf2); border-bottom: 1px solid var(--st-border);
+  font-size: 11px; font-weight: 700; color: var(--st-t3);
+  letter-spacing: 0.6px; text-transform: uppercase;
+  gap: 12px;
+}
+.lst-row {
+  display: grid;
+  grid-template-columns: 2fr 100px 120px 110px 110px 160px;
+  padding: 14px 18px; gap: 12px;
+  border-bottom: 1px solid var(--st-border);
+  align-items: center; transition: background 0.13s;
+}
+.lst-row:last-child { border-bottom: none; }
+.lst-row:hover { background: var(--st-surf2); }
+
+.lst-cell { display: flex; align-items: center; font-size: 13px; color: var(--st-t2); }
+.lst-cell-title { gap: 12px; }
+.lst-cell-stat  { gap: 5px; color: var(--st-t3); }
+.lst-cell-date  { color: var(--st-t3); }
+
+/* Thumbnail */
+.lst-thumb {
+  width: 80px; height: 46px; border-radius: 6px; flex-shrink: 0;
+  background: var(--st-surf3); overflow: hidden; position: relative;
+}
+.lst-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.lst-thumb-placeholder {
+  width: 100%; height: 100%; display: flex; align-items: center;
+  justify-content: center; color: var(--st-t3);
+}
+.lst-thumb-live-badge {
+  position: absolute; bottom: 3px; left: 3px;
+  background: #e74c3c; color: #fff; font-size: 8px; font-weight: 800;
+  padding: 1px 5px; border-radius: 3px; letter-spacing: 0.5px;
+}
+
+.lst-stream-title {
+  font-weight: 600; color: var(--st-t1); font-size: 13px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 240px;
+}
+.lst-stream-cat { font-size: 11px; color: var(--st-t3); margin-top: 2px; }
+
+/* Status badge */
+.lst-status {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 5px;
+}
+.lst-status-live      { background: rgba(231,76,60,0.15); color: #e74c3c; border: 1px solid rgba(231,76,60,0.3); }
+.lst-status-ended     { background: var(--st-surf3); color: var(--st-t3); border: 1px solid var(--st-border); }
+.lst-status-scheduled { background: rgba(99,102,241,0.12); color: #818cf8; border: 1px solid rgba(99,102,241,0.25); }
+.lst-status-cancelled { background: var(--st-surf2); color: var(--st-t3); border: 1px solid var(--st-border); }
+.lst-live-dot-sm {
+  width: 5px; height: 5px; border-radius: 50%; background: #e74c3c;
+  animation: lc-pulse 1.4s ease infinite;
+}
+
+/* Action buttons */
+.lst-cell-actions { display: flex; gap: 7px; }
+.lst-action-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 6px 13px; border-radius: 7px;
+  background: var(--st-surf2); border: 1px solid var(--st-border);
+  color: var(--st-t2); font-size: 12px; font-weight: 600;
+  text-decoration: none; cursor: pointer; transition: all 0.13s;
+  white-space: nowrap;
+}
+.lst-action-btn:hover { background: var(--st-surf3); color: var(--st-t1); }
+.lst-action-btn.lst-action-primary {
+  background: var(--st-rose-bg); border-color: var(--st-rose-border);
+  color: var(--st-rose);
+}
+.lst-action-btn.lst-action-primary:hover { background: var(--st-rose); color: #fff; }
+
+/* Spinner reuse from LiveControl */
+.lc-spinner {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 3px solid var(--st-border2);
+  border-top-color: var(--st-rose);
+  animation: lc-spin 0.8s linear infinite;
+}
+@keyframes lc-spin { to { transform: rotate(360deg); } }
+@keyframes lc-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+
+@media (max-width: 900px) {
+  .lst-thead, .lst-row { grid-template-columns: 1fr 90px 100px 130px; }
+  .lst-thead span:nth-child(4), .lst-thead span:nth-child(5),
+  .lst-row .lst-cell:nth-child(4), .lst-row .lst-cell:nth-child(5) { display: none; }
+}

@@ -1,0 +1,154 @@
+/* studio/src/pages/AudioLibrary/AudioLibrary.css */
+
+/* ── Page ── */
+.al-page { padding: 28px 32px 80px; }
+
+/* ── Header ── */
+.al-header {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; margin-bottom: 24px; flex-wrap: wrap;
+}
+.al-header-left { display: flex; align-items: center; gap: 14px; }
+.al-header-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--sn-teal-bg); border: 1px solid var(--sn-teal-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--sn-teal); flex-shrink: 0;
+}
+.al-title {
+  font-family: var(--st-font-display); font-weight: 800; font-size: 22px;
+  color: var(--st-t1); letter-spacing: -0.3px;
+}
+.al-sub { font-size: 12.5px; color: var(--st-t3); margin-top: 3px; }
+.al-saved-count {
+  font-size: 12px; color: var(--st-rose);
+  background: var(--st-rose-bg); border: 1px solid var(--st-rose-border);
+  padding: 5px 12px; border-radius: 99px;
+  font-family: var(--st-font-display); font-weight: 600;
+}
+
+/* ── Toolbar ── */
+.al-toolbar {
+  display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap; margin-bottom: 20px;
+}
+.al-search-wrap {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--st-surf2); border: 1px solid var(--st-border);
+  border-radius: 9px; padding: 7px 12px;
+  color: var(--st-t3); flex: 1; min-width: 180px;
+  transition: border-color 0.15s;
+}
+.al-search-wrap:focus-within { border-color: var(--st-border2); }
+.al-search { flex: 1; background: none; color: var(--st-t1); font-size: 13px; }
+.al-search::placeholder { color: var(--st-t4); }
+.al-filter-group { display: flex; align-items: center; gap: 6px; color: var(--st-t3); }
+.al-select {
+  background: var(--st-surf2); border: 1px solid var(--st-border);
+  border-radius: 8px; padding: 7px 10px;
+  font-size: 12.5px; color: var(--st-t2); cursor: pointer;
+  transition: border-color 0.15s;
+}
+.al-select:hover { border-color: var(--st-border2); }
+.al-count {
+  font-size: 12px; color: var(--st-t4);
+  margin-left: auto; white-space: nowrap;
+}
+
+/* ── Table ── */
+.al-table-wrap {
+  background: var(--st-surf1); border: 1px solid var(--st-border);
+  border-radius: 12px; overflow: hidden;
+}
+.al-table { width: 100%; border-collapse: collapse; }
+.al-table thead th {
+  padding: 10px 14px;
+  text-align: left; font-size: 11px;
+  color: var(--st-t4); font-family: var(--st-font-display); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.6px;
+  border-bottom: 1px solid var(--st-border);
+  background: var(--st-surf2);
+}
+.al-table tbody td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--st-border);
+  vertical-align: middle;
+}
+.al-table tbody tr:last-child td { border-bottom: none; }
+.al-row { transition: background 0.12s; }
+.al-row:hover td { background: var(--st-surf2); }
+.al-row-playing td { background: var(--sn-teal-bg) !important; }
+
+/* ── Play button ── */
+.al-play-btn {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--st-surf3); border: 1px solid var(--st-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--st-t2); transition: all 0.15s; position: relative;
+}
+.al-play-btn:hover { background: var(--sn-teal-bg); color: var(--sn-teal); border-color: var(--sn-teal-border); }
+.al-row-playing .al-play-btn { background: var(--sn-teal-bg); color: var(--sn-teal); border-color: var(--sn-teal-border); }
+
+.al-play-wave {
+  position: absolute; bottom: 3px; right: 3px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--sn-teal);
+  animation: al-pulse 0.9s ease-in-out infinite alternate;
+}
+@keyframes al-pulse { 0% { transform: scale(0.7); opacity: 0.6; } 100% { transform: scale(1.2); opacity: 1; } }
+
+/* ── Track info ── */
+.al-track-title { font-size: 13px; color: var(--st-t1); font-weight: 500; margin-bottom: 2px; }
+.al-track-artist { font-size: 11.5px; color: var(--st-t4); }
+
+/* ── Genre badge ── */
+.al-genre-badge {
+  display: inline-block;
+  padding: 2px 9px; border-radius: 99px;
+  font-size: 11px; color: var(--st-t3);
+  background: var(--st-surf3); border: 1px solid var(--st-border);
+}
+
+/* ── Mood ── */
+.al-mood { font-size: 12px; font-weight: 500; }
+
+/* ── Meta ── */
+.al-meta { font-size: 12px; color: var(--st-t3); white-space: nowrap; }
+.al-dur  { font-family: 'JetBrains Mono', monospace; }
+
+/* ── Tags ── */
+.al-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+.al-tag {
+  font-size: 10.5px; color: var(--st-t4);
+  background: var(--st-surf3); padding: 1px 7px;
+  border-radius: 99px;
+}
+
+/* ── Save button ── */
+.al-save-btn {
+  width: 28px; height: 28px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--st-t4); transition: all 0.15s;
+}
+.al-save-btn:hover { background: var(--st-surf3); color: var(--st-rose); }
+.al-saved { color: var(--st-rose) !important; }
+
+/* ── Empty ── */
+.al-empty {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; min-height: 260px; color: var(--st-t4); font-size: 13px;
+  background: var(--st-surf1); border: 1px solid var(--st-border); border-radius: 12px;
+}
+
+/* ── Footer note ── */
+.al-footer-note {
+  font-size: 11.5px; color: var(--st-t4); text-align: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 700px) {
+  .al-table thead th:nth-child(4),
+  .al-table tbody td:nth-child(4),
+  .al-table thead th:nth-child(7),
+  .al-table tbody td:nth-child(7) { display: none; }
+}

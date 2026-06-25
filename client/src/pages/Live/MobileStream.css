@@ -1,0 +1,136 @@
+/* client/src/pages/Live/MobileStream.css */
+/* Scoped to .ms-root only — no global resets that leak into other pages */
+
+.ms-root {
+  min-height: 100dvh;
+  min-height: 100vh; /* fallback */
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  box-sizing: border-box;
+}
+
+.ms-root *, .ms-root *::before, .ms-root *::after {
+  box-sizing: border-box;
+}
+
+.ms-center {
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 32px;
+  text-align: center;
+  color: #fff;
+}
+
+/* Preview */
+.ms-preview-wrap {
+  position: relative;
+  flex: 1;
+  background: #111;
+  overflow: hidden;
+  min-height: 0;
+}
+.ms-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scaleX(-1);
+}
+
+.ms-live-badge {
+  position: absolute;
+  top: 14px; left: 14px;
+  display: flex; align-items: center; gap: 7px;
+  background: rgba(192,57,43,0.9); color: #fff;
+  font-size: 13px; font-weight: 800; letter-spacing: 0.8px;
+  padding: 5px 12px; border-radius: 5px; backdrop-filter: blur(4px);
+}
+.ms-live-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: #fff;
+  animation: ms-pulse 1.2s ease infinite;
+  display: inline-block;
+}
+@keyframes ms-pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+
+.ms-flip-btn {
+  position: absolute; top: 14px; right: 14px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(0,0,0,0.5); border: none; font-size: 20px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(4px); color: #fff;
+}
+
+/* Controls */
+.ms-controls {
+  background: #111;
+  padding: 20px 24px 32px;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  flex-shrink: 0;
+}
+.ms-info { text-align: center; }
+.ms-info-title { font-size: 17px; font-weight: 800; color: #fff; margin: 0 0 5px; }
+.ms-info-sub   { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.5; margin: 0; }
+
+.ms-cam-toggle { display: flex; gap: 8px; }
+.ms-cam-btn {
+  padding: 8px 18px; border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent; color: rgba(255,255,255,0.6);
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; transition: all 0.15s;
+}
+.ms-cam-btn.active {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.5); color: #fff;
+}
+
+.ms-start-btn {
+  width: 100%; max-width: 280px; padding: 16px;
+  border-radius: 12px; border: none;
+  background: #c0392b; color: #fff;
+  font-size: 17px; font-weight: 800;
+  font-family: 'Outfit', sans-serif; cursor: pointer;
+  transition: opacity 0.15s; display: block;
+}
+.ms-start-btn:active { opacity: 0.85; }
+
+.ms-stop-btn {
+  width: 100%; max-width: 280px; padding: 16px;
+  border-radius: 12px;
+  border: 2px solid rgba(192,57,43,0.6);
+  background: rgba(192,57,43,0.15); color: #e74c3c;
+  font-size: 17px; font-weight: 800;
+  font-family: 'Outfit', sans-serif; cursor: pointer; transition: all 0.15s;
+}
+.ms-stop-btn:active { background: rgba(192,57,43,0.3); }
+
+.ms-streaming-info { text-align: center; }
+
+/* Done / Error */
+.ms-done-tick {
+  width: 70px; height: 70px; border-radius: 50%;
+  background: rgba(34,197,94,0.2); border: 2px solid #22c55e;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; color: #22c55e;
+}
+.ms-error-icon { font-size: 48px; }
+.ms-title { font-size: 20px; font-weight: 800; color: #fff; margin: 0; }
+.ms-sub   { font-size: 13px; color: rgba(255,255,255,0.55); margin: 0; }
+
+.ms-retry-btn {
+  padding: 12px 28px; border-radius: 8px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  color: #fff; font-size: 14px; font-weight: 600; cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.ms-spinner {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.15); border-top-color: #fff;
+  animation: ms-spin 0.9s linear infinite; margin: 0 auto 8px; display: block;
+}
+@keyframes ms-spin { to { transform: rotate(360deg); } }

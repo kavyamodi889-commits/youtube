@@ -1,0 +1,266 @@
+/* FILE: client/src/pages/FocusMode/FocusMode.css */
+
+.focus-setup-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.focus-setup-card {
+  background: var(--s1);
+  border: 1px solid var(--gbd);
+  border-radius: 24px;
+  padding: 36px 40px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35), inset 0 1px 0 var(--gs);
+}
+
+.focus-setup-header {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
+}
+.focus-setup-icon { font-size: 2.4rem; }
+.focus-setup-title {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 1.6rem; color: var(--t1); margin: 0;
+}
+.focus-setup-sub { font-size: 0.875rem; color: var(--t3); margin: 2px 0 0; }
+
+/* Step dots */
+.focus-steps {
+  display: flex; gap: 8px; margin-bottom: 28px;
+}
+.focus-step-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--s3); transition: all 0.3s;
+}
+.focus-step-dot.active  { background: var(--b); }
+.focus-step-dot.current { width: 24px; background: var(--a); border-radius: 4px; }
+
+/* Step content */
+.focus-step-content { display: flex; flex-direction: column; gap: 16px; }
+.focus-step-title {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: 1.1rem; color: var(--t1); margin: 0;
+}
+.focus-step-hint { font-size: 0.82rem; color: var(--t3); margin: -8px 0 0; }
+
+/* Duration grid */
+.focus-duration-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+}
+.focus-duration-btn {
+  padding: 14px 10px; border-radius: 12px;
+  background: var(--s2); border: 1px solid var(--gbd);
+  color: var(--t2); font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 500; cursor: pointer;
+  transition: all 0.15s;
+}
+.focus-duration-btn:hover { background: var(--s3); color: var(--t1); }
+.focus-duration-btn.active {
+  background: rgba(var(--a-rgb, 181,41,78), 0.12);
+  border-color: var(--a); color: var(--a); font-weight: 700;
+}
+
+.focus-custom-wrap { overflow: hidden; }
+.focus-custom-input {
+  width: 100%; background: var(--s2); border: 1px solid var(--gbd);
+  border-radius: 10px; padding: 10px 14px; color: var(--t1);
+  font-family: 'DM Sans', sans-serif; font-size: 14px;
+  outline: none; box-sizing: border-box; transition: border-color 0.2s;
+}
+.focus-custom-input:focus { border-color: var(--a); }
+
+/* Category grid */
+.focus-category-grid {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.focus-cat-btn {
+  padding: 8px 14px; border-radius: 99px;
+  background: var(--s2); border: 1px solid var(--gbd);
+  color: var(--t2); font-family: 'DM Sans', sans-serif;
+  font-size: 13px; cursor: pointer; transition: all 0.15s;
+}
+.focus-cat-btn:hover { background: var(--s3); color: var(--t1); }
+.focus-cat-btn.blocked {
+  background: rgba(166,60,60,0.12); border-color: var(--err);
+  color: var(--err); font-weight: 600;
+}
+
+/* Goal */
+.focus-goal-input {
+  width: 100%; background: var(--s2); border: 1px solid var(--gbd);
+  border-radius: 12px; padding: 12px 14px; color: var(--t1);
+  font-family: 'DM Sans', sans-serif; font-size: 14px;
+  outline: none; box-sizing: border-box; resize: none;
+  transition: border-color 0.2s;
+}
+.focus-goal-input:focus { border-color: var(--a); }
+.focus-goal-input::placeholder { color: var(--t3); }
+
+/* Summary */
+.focus-summary {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  background: var(--s2); border-radius: 12px; padding: 14px 16px;
+}
+.focus-summary-item {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--t2);
+}
+.focus-summary-icon { font-size: 16px; }
+
+/* Nav */
+.focus-nav-row { display: flex; gap: 10px; align-items: center; justify-content: space-between; }
+.focus-back-btn {
+  padding: 10px 18px; border-radius: 99px;
+  background: var(--s2); border: 1px solid var(--gbd);
+  color: var(--t3); font-family: 'DM Sans', sans-serif;
+  font-size: 14px; cursor: pointer; transition: all 0.15s;
+}
+.focus-back-btn:hover { background: var(--s3); color: var(--t1); }
+.focus-next-btn, .focus-start-btn {
+  padding: 11px 28px; border-radius: 99px;
+  background: var(--a); border: none; color: #fff;
+  font-family: 'Outfit', sans-serif; font-weight: 700;
+  font-size: 14px; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(181,41,78,0.35);
+  transition: box-shadow 0.2s;
+}
+.focus-next-btn:hover, .focus-start-btn:hover {
+  box-shadow: 0 6px 24px rgba(181,41,78,0.5);
+}
+
+/* Auth wall */
+.focus-auth-wall {
+  text-align: center; display: flex; flex-direction: column;
+  align-items: center; gap: 12px;
+}
+.focus-auth-icon { font-size: 3rem; }
+.focus-auth-wall h2 { color: var(--t1); font-family: 'Space Grotesk', sans-serif; }
+.focus-auth-wall p  { color: var(--t3); font-size: 0.875rem; }
+/* ── Custom category input row ── */
+.focus-custom-cat-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  width: 100%;
+}
+.focus-custom-cat-input {
+  flex: 1;
+  padding: 8px 13px;
+  border-radius: 10px;
+  border: 1px solid var(--gbd);
+  background: var(--s3);
+  color: var(--t1);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.18s;
+}
+.focus-custom-cat-input::placeholder { color: var(--t3); }
+.focus-custom-cat-input:focus { border-color: var(--a); }
+
+.focus-custom-cat-add {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--a-border);
+  background: var(--a-dim);
+  color: var(--a);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s;
+}
+.focus-custom-cat-add:hover:not(:disabled) {
+  background: var(--a);
+  color: #fff;
+}
+.focus-custom-cat-add:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Custom category pill (user-added, shown as blocked) */
+.focus-cat-custom {
+  border-style: dashed !important;
+  opacity: 0.85;
+}
+
+/* Fix category grid overflow so it doesn't overlap the nav bar */
+.focus-category-grid {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  max-height: 160px;
+  overflow-y: auto;
+  padding-right: 4px;
+  padding-bottom: 4px;
+}
+.focus-category-grid::-webkit-scrollbar { width: 4px; }
+.focus-category-grid::-webkit-scrollbar-thumb {
+  background: var(--s3); border-radius: 2px;
+}
+
+/* Step 2 content needs scroll room when many categories exist */
+.focus-step-content {
+  display: flex; flex-direction: column; gap: 16px;
+  overflow: visible;
+}
+
+/* Custom duration error states */
+.focus-custom-input--error {
+  border-color: var(--err) !important;
+}
+.focus-custom-error {
+  color: var(--err);
+  font-size: 12px;
+  margin: 4px 0 0;
+  font-family: 'DM Sans', sans-serif;
+}
+/* ── Focus Reward Tracker ────────────────────────────────────────── */
+.focus-reward-tracker {
+  width: 100%; max-width: 480px; margin: 20px auto 0;
+  background: var(--s1); border: 1px solid var(--s3);
+  border-radius: 16px; padding: 22px 24px 18px;
+}
+.frt-header {
+  display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px;
+}
+.frt-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+.frt-title { font-size: 0.95rem; font-weight: 700; color: var(--t1); margin-bottom: 2px; }
+.frt-sub   { font-size: 0.78rem; color: var(--t3); line-height: 1.4; }
+
+.frt-row { margin-bottom: 14px; }
+.frt-row:last-of-type { margin-bottom: 10px; }
+.frt-row-top {
+  display: flex; align-items: center;
+  justify-content: space-between; margin-bottom: 6px;
+}
+.frt-reward-label {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 0.82rem; color: var(--t2);
+}
+.frt-reward-label strong { color: var(--t1); }
+.frt-reward-icon { font-size: 1rem; }
+.frt-count {
+  font-size: 0.82rem; font-weight: 700; color: var(--t2);
+  font-variant-numeric: tabular-nums;
+}
+.frt-count.frt-claimed { color: #4ade80; }
+
+.frt-bar-track {
+  height: 7px; background: var(--s3); border-radius: 4px; overflow: hidden;
+}
+.frt-bar-fill {
+  height: 100%; border-radius: 4px;
+  min-width: 4px;
+}
+.frt-bar-premium { background: linear-gradient(90deg, #4f46e5, #818cf8); }
+.frt-bar-ultra   { background: linear-gradient(90deg, #d97706, #fbbf24); }
+
+.frt-note {
+  font-size: 0.72rem; color: var(--t4);
+  text-align: center; margin: 10px 0 0;
+}

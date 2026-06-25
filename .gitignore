@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+.env.local
+server/tmp/
+*.log
+.DS_Store
+Thumbs.db
+recommendation/venv/
+recommendation/__pycache__/
+music/.vite/
+studio/.vite/
+*.pyc

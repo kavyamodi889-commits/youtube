@@ -1,0 +1,153 @@
+/* FILE: client/src/styles/variables.css */
+:root {
+  /* BASE — ink blue-black, not pure black */
+  --base:      #0a0a18;
+  --s1:        rgba(255,255,255,0.04);
+  --s2:        rgba(255,255,255,0.07);
+  --s3:        rgba(255,255,255,0.10);
+  --s4:        rgba(255,255,255,0.14);
+
+  /* ACCENT — dusty rose crimson */
+  --a:         #b5294e;
+  --a-dim:     rgba(181,41,78,0.14);
+  --a-glow:    rgba(181,41,78,0.30);
+  --a-border:  rgba(181,41,78,0.40);
+
+  /* SECONDARY — muted indigo */
+  --b:         #6654a8;
+  --b-dim:     rgba(102,84,168,0.14);
+  --b-border:  rgba(102,84,168,0.35);
+  --b-glow:    rgba(102,84,168,0.30);
+
+  /* TERTIARY — slate sage */
+  --c:         #3d9e8c;
+  --c-dim:     rgba(61,158,140,0.12);
+  --c-border:  rgba(61,158,140,0.30);
+
+  /* GOLD — monetisation only */
+  --gold:      #b8882a;
+  --gold-dim:  rgba(184,136,42,0.14);
+  --gold-border: rgba(184,136,42,0.35);
+
+  /* TEXT */
+  --t1:        #dddaf0;
+  --t2:        #8e8baa;
+  --t3:        #4e4c68;
+  --t4:        #28263c;
+
+  /* STATES */
+  --ok:        #2d9e6e;
+  --warn:      #b8882a;
+  --err:       #a63c3c;
+  --live:      #9e2a2a;
+
+  /* GLASS */
+  --gb:        rgba(255,255,255,0.06);
+  --gbd:       rgba(255,255,255,0.10);
+  --gs:        rgba(255,255,255,0.08);
+
+  /* NEUMORPHIC */
+  --nd:        rgba(0,0,0,0.6);
+  --nl:        rgba(255,255,255,0.055);
+
+  /* SPACING */
+  --sp-xs:  4px;  
+  --sp-sm:  8px;
+  --sp-md: 16px;  
+  --sp-lg: 24px;
+  --sp-xl: 32px;  
+  --sp-2xl:48px;
+  --sp-3xl:64px;
+
+  /* RADIUS */
+  --r-xs: 4px; 
+  --r-sm: 6px; 
+  --r-md: 10px;
+  --r-lg: 16px; 
+  --r-xl: 24px; 
+  --r-pill: 999px;
+
+  /* EASING */
+  --spring: cubic-bezier(0.34,1.56,0.64,1);
+  --smooth: cubic-bezier(0.4,0,0.2,1);
+  --sharp:  cubic-bezier(0.4,0,0.6,1);
+
+  /* SEMANTIC SURFACE / BORDER / ACCENT ALIASES (dark theme) */
+  --surf1:   rgba(255,255,255,0.04);
+  --surf2:   rgba(255,255,255,0.07);
+  --surf3:   rgba(255,255,255,0.10);
+  --surf4:   rgba(255,255,255,0.14);
+  --border:  rgba(255,255,255,0.10);
+  --border2: rgba(255,255,255,0.18);
+  --rose:    #b5294e;
+  --bg:      #0a0a18;
+}
+
+/* LIGHT THEME */
+[data-theme="light"] {
+  --base:      #e8e4f4;
+
+  /* Glass surface — semi-transparent so mesh shows through */
+  --s1:        rgba(255,255,255,0.28);
+  --s2:        rgba(255,255,255,0.40);
+  --s3:        rgba(255,255,255,0.55);
+  --s4:        rgba(255,255,255,0.70);
+
+  --a:         #9c1f40;
+  --a-dim:     rgba(156,31,64,0.12);
+  --a-glow:    rgba(156,31,64,0.25);
+  --a-border:  rgba(156,31,64,0.38);
+  --b:         #5040a0;
+  --b-dim:     rgba(80,64,160,0.12);
+  --b-border:  rgba(80,64,160,0.28);
+  --b-glow:    rgba(80,64,160,0.22);
+  --c:         #2e7a6e;
+  --c-dim:     rgba(46,122,110,0.12);
+  --c-border:  rgba(46,122,110,0.28);
+  --gold:      #8a6018;
+  --gold-dim:  rgba(138,96,24,0.12);
+  --gold-border: rgba(138,96,24,0.30);
+
+  /* TEXT — dark on light, but readable */
+  --t1:        #14122a;
+  --t2:        #3d3b58;
+  --t3:        #7a789a;
+  --t4:        #b0add0;
+
+  --ok: #1e7a54; --warn: #8a6018; --err: #8a2828; --live: #8a1a1a;
+
+  /* GLASS */
+  --gb:  rgba(255,255,255,0.38);
+  --gbd: rgba(0,0,0,0.10);
+  --gs:  rgba(255,255,255,0.55);
+  --nd:  rgba(0,0,0,0.07);
+  --nl:  rgba(255,255,255,0.85);
+
+  /* STRUCTURAL */
+  --navbar-bg:     rgba(225,220,250,0.50);
+  --navbar-border: rgba(255,255,255,0.40);
+  --card-bg:       rgba(255,255,255,0.30);
+  --card-border:   rgba(255,255,255,0.55);
+  --input-bg:      rgba(255,255,255,0.55);
+  --input-border:  rgba(255,255,255,0.75);
+  --sidebar-bg:    rgba(215,210,242,0.52);
+  --overlay:       rgba(0,0,0,0.45);
+
+  /* SEMANTIC SURFACE / BORDER / ACCENT ALIASES (light theme) */
+  --surf1:   rgba(0,0,0,0.03);
+  --surf2:   rgba(0,0,0,0.06);
+  --surf3:   rgba(0,0,0,0.09);
+  --surf4:   rgba(0,0,0,0.13);
+  --border:  rgba(0,0,0,0.10);
+  --border2: rgba(0,0,0,0.18);
+  --rose:    #9c1f40;
+  --bg:      #e8e4f4;
+
+  /* BACKGROUND MESH — stronger so it shows through glass */
+  --mesh-a: rgba(156,31,64,0.22);
+  --mesh-b: rgba(80,64,160,0.20);
+  --mesh-c: rgba(46,122,110,0.14);
+  --mesh-d: rgba(80,64,160,0.16);
+  --mesh-e: rgba(156,31,64,0.15);
+  --mesh-f: rgba(138,96,24,0.09);
+}

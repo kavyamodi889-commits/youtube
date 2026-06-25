@@ -1,0 +1,94 @@
+# render.yaml — Render.com Blueprint
+# Deploy the entire AURA stack from one file.
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  # ─────────────────────────────────────────────────────────────────────────────
+  # 1. AURA API + Client (unified Node.js service)
+  #    Builds all React apps, then serves them via Express in production.
+  # ─────────────────────────────────────────────────────────────────────────────
+  - type: web
+    name: aura-server
+    runtime: node
+    region: singapore
+    plan: free             # change to "starter" for always-on
+    rootDir: .
+    buildCommand: |
+      cd client      && npm ci && npm run build && cd ..
+      cd studio      && npm ci && npm run build && cd ..
+      cd aura-admin  && npm ci && npm run build && cd ..
+      cd server      && npm ci
+    startCommand: node server/server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false          # set in Render dashboard
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: JWT_ACCESS_EXPIRES
+        value: 15m
+      - key: JWT_REFRESH_EXPIRES
+        value: 7d
+      - key: CLIENT_URL
+        fromService:
+          type: web
+          name: aura-server
+          property: host
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: 587
+      - key: SMTP_SECURE
+        value: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: SMTP_FROM
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_CALLBACK_URL
+        sync: false          # set to: https://aura-server.onrender.com/api/auth/google/callback
+      - key: GOOGLE_VISION_API_KEY
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: ACR_HOST
+        sync: false
+      - key: ACR_ACCESS_KEY
+        sync: false
+      - key: ACR_ACCESS_SECRET
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: VAPID_PUBLIC_KEY
+        sync: false
+      - key: VAPID_PRIVATE_KEY
+        sync: false
+      - key: VAPID_EMAIL
+        sync: false
+      - key: FFMPEG_PATH
+        value: ffmpeg
+      - key: RTMP_PORT
+        value: 1935
+      - key: RTMP_HTTP_PORT
+        value: 8888
+      - key: HLS_OUTPUT_PATH
+        value: ./tmp/hls

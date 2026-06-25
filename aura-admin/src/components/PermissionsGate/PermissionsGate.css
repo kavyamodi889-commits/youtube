@@ -1,0 +1,76 @@
+/* src/components/PermissionsGate/PermissionsGate.css */
+.apg-backdrop {
+  position: fixed; inset: 0; z-index: 9990;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+
+.apg-modal {
+  width: 100%; max-width: 400px;
+  background: #0d0d18;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 32px;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 14px; text-align: center;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+}
+
+.apg-icon { font-size: 36px; }
+
+.apg-title {
+  font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800;
+  color: #f0f0f8;
+}
+.apg-desc {
+  font-size: 13px; color: rgba(240,240,248,0.55); line-height: 1.6;
+}
+
+.apg-btns { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+
+.apg-allow-btn {
+  width: 100%; padding: 11px;
+  background: #b5294e; color: #fff;
+  border: none; border-radius: 10px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: opacity 0.15s;
+}
+.apg-allow-btn:hover { opacity: 0.85; }
+
+.apg-skip-btn {
+  width: 100%; padding: 9px;
+  background: none; border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(240,240,248,0.45); border-radius: 9px;
+  font-size: 13px; cursor: pointer; font-family: inherit;
+  transition: background 0.13s;
+}
+.apg-skip-btn:hover { background: rgba(255,255,255,0.05); }
+
+.apg-status {
+  font-size: 13px; font-weight: 600;
+  display: flex; align-items: center; gap: 6px; justify-content: center;
+}
+.apg-requesting { color: rgba(240,240,248,0.5); }
+.apg-granted    { color: #22c55e; }
+.apg-denied     { color: #ef4444; font-weight: 500; font-size: 12px; }
+
+.apg-spinner {
+  display: inline-block; width: 13px; height: 13px;
+  border: 2px solid rgba(255,255,255,0.15); border-top-color: rgba(255,255,255,0.6);
+  border-radius: 50%; animation: apg-spin 0.7s linear infinite;
+}
+@keyframes apg-spin { to { transform: rotate(360deg); } }
+
+.apg-result { display: flex; flex-direction: column; gap: 12px; width: 100%; align-items: center; }
+
+.apg-continue-btn {
+  padding: 9px 28px; background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 9px;
+  color: #f0f0f8; font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: inherit; transition: background 0.13s;
+}
+.apg-continue-btn:hover { background: rgba(255,255,255,0.14); }
+
+.apg-note { font-size: 11px; color: rgba(240,240,248,0.25); }

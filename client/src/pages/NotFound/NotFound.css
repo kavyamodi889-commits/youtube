@@ -1,0 +1,165 @@
+/* FILE: client/src/pages/NotFound/NotFound.css */
+
+.nf-page {
+  min-height: calc(100vh - 102px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ambient glow behind the 404 */
+.nf-glow {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--a-glow) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -55%);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* ── BIG 404 NUMBER ── */
+.nf-code {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  user-select: none;
+}
+
+.nf-4 {
+  font-family: 'Bebas Neue', 'Space Grotesk', sans-serif;
+  font-size: clamp(100px, 18vw, 180px);
+  line-height: 1;
+  color: var(--t1);
+  letter-spacing: -4px;
+  text-shadow: 0 0 60px var(--a-glow), 0 4px 24px rgba(0,0,0,0.3);
+}
+
+/* The 0 is a hollow ring */
+.nf-0 {
+  position: relative;
+  width: clamp(90px, 16vw, 160px);
+  height: clamp(100px, 18vw, 180px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nf-0-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: clamp(8px, 1.2vw, 14px) solid var(--a);
+  box-shadow:
+    0 0 30px var(--a-glow),
+    0 0 60px var(--a-dim),
+    inset 0 0 20px var(--a-dim);
+  animation: nf-ring-pulse 2.5s ease-in-out infinite;
+}
+.nf-0-dot {
+  width: 16%; height: 16%;
+  border-radius: 50%;
+  background: var(--a);
+  box-shadow: 0 0 16px var(--a-glow);
+}
+
+@keyframes nf-ring-pulse {
+  0%, 100% { box-shadow: 0 0 30px var(--a-glow), 0 0 60px var(--a-dim), inset 0 0 20px var(--a-dim); }
+  50%       { box-shadow: 0 0 50px var(--a-glow), 0 0 90px var(--a-dim), inset 0 0 30px var(--a-dim); }
+}
+
+/* ── TEXT ── */
+.nf-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--t1);
+  margin: 0 0 12px;
+  letter-spacing: -0.3px;
+}
+
+.nf-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--t2);
+  max-width: 440px;
+  line-height: 1.6;
+  margin: 0 0 36px;
+}
+
+/* ── BUTTONS ── */
+.nf-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.nf-btn-primary {
+  padding: 11px 32px;
+  border-radius: var(--r-pill);
+  background: var(--a);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 18px var(--a-glow);
+  transition: box-shadow 0.2s, transform 0.15s;
+}
+.nf-btn-primary:hover {
+  box-shadow: 0 6px 28px var(--a-glow);
+}
+
+.nf-btn-secondary {
+  padding: 11px 28px;
+  border-radius: var(--r-pill);
+  background: var(--s2);
+  color: var(--t1);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid var(--gbd);
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.nf-btn-secondary:hover { background: var(--s3); }
+
+/* ── HINT ── */
+.nf-hint {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.84rem;
+  color: var(--t3);
+  margin: 0;
+}
+.nf-link {
+  background: none;
+  border: none;
+  color: var(--a);
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+.nf-link:hover { color: var(--t1); }
+
+/* Light mode */
+[data-theme="light"] .nf-4 {
+  text-shadow: 0 0 40px var(--a-glow), 0 2px 16px rgba(0,0,0,0.12);
+}
+[data-theme="light"] .nf-btn-secondary {
+  background: rgba(255,255,255,0.50);
+  border-color: rgba(255,255,255,0.75);
+}
+[data-theme="light"] .nf-btn-secondary:hover {
+  background: rgba(255,255,255,0.70);
+}
