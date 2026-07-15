@@ -14,10 +14,10 @@ services:
     plan: free             # change to "starter" for always-on
     rootDir: .
     buildCommand: |
-      cd client      && npm ci && npm run build && cd ..
-      cd studio      && npm ci && npm run build && cd ..
-      cd aura-admin  && npm ci && npm run build && cd ..
-      cd server      && npm ci
+      npm install --prefix client && npm run build --prefix client
+      npm install --prefix studio && npm run build --prefix studio
+      npm install --prefix aura-admin && npm run build --prefix aura-admin
+      npm install --prefix server
     startCommand: node server/server.js
     healthCheckPath: /api/health
     envVars:
@@ -36,10 +36,15 @@ services:
       - key: JWT_REFRESH_EXPIRES
         value: 7d
       - key: CLIENT_URL
-        fromService:
-          type: web
-          name: aura-server
-          property: host
+        value: https://aura-server.onrender.com
+      - key: STUDIO_URL
+        value: https://aura-server.onrender.com
+      - key: ADMIN_URL
+        value: https://aura-server.onrender.com
+      - key: VITE_API_URL
+        value: https://aura-server.onrender.com/api
+      - key: VITE_SOCKET_URL
+        value: https://aura-server.onrender.com
       - key: SMTP_HOST
         sync: false
       - key: SMTP_PORT
@@ -57,7 +62,7 @@ services:
       - key: GOOGLE_CLIENT_SECRET
         sync: false
       - key: GOOGLE_CALLBACK_URL
-        sync: false          # set to: https://aura-server.onrender.com/api/auth/google/callback
+        value: https://aura-server.onrender.com/api/auth/google/callback
       - key: GOOGLE_VISION_API_KEY
         sync: false
       - key: CLOUDINARY_CLOUD_NAME
