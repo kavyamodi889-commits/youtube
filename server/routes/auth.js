@@ -1,4 +1,4 @@
-// FILE: server/routes/auth.js
+ // FILE: server/routes/auth.js
 const express  = require('express')
 const passport = require('passport')
 const multer   = require('multer')

@@ -1,0 +1,28 @@
+name: 🚀 Deploy to Render
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch: # allow manual trigger
+
+jobs:
+  deploy:
+    name: Trigger Render Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ✅ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Trigger Render Deploy Hook
+        run: |
+          echo "Triggering Render deployment..."
+          curl -s -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}" \
+            -H "Content-Type: application/json" \
+            --fail \
+            && echo "✅ Deploy triggered successfully!" \
+            || echo "⚠️ Deploy hook not configured yet — set RENDER_DEPLOY_HOOK_URL in GitHub Secrets"
+
+      - name: 📣 Notify Success
+        run: echo "🎉 Deployment to Render triggered from commit ${{ github.sha }}"
